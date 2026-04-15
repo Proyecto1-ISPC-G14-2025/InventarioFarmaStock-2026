@@ -3,14 +3,9 @@ Administrador web de Inventarios para medicamentos. (Modulo Programador Web 2026
 
 ## :pushpin: Descripción
 Este proyecto es un Administrador Web de Inventarios para Medicamentos, diseñado para facilitar la gestión eficiente y segura del stock en farmacias o centros de salud. La aplicación permite controlar entradas, salidas, fechas de expiración, y reportes detallados del inventario de medicamentos.
+La solución implementa un enfoque moderno y escalable con tecnologías web ampliamente utilizadas.
 
-La solución implementa un enfoque moderno y escalable con tecnologías web ampliamente utilizadas:
 
-Frontend: Utiliza Angular para construir una interfaz responsiva, amigable y accesible, que funciona perfectamente en dispositivos móviles y de escritorio. El diseño está enfocado en usabilidad, mostrando formularios, tablas dinámicas, botones de acción y notificaciones visuales para una experiencia óptima.
-
-Backend: Está desarrollado en Python (frameworks Django) para gestionar la lógica del servidor, autenticar usuarios, procesar solicitudes, y manejar la comunicación con la base de datos.
-
-Base de datos: Se usa MySQL como gestor relacional para almacenar de forma estructurada toda la información del inventario, usuarios, transacciones y configuraciones. Permite consultas eficientes y seguras para ordenar, filtrar y reportar datos.
 
 ### :pushpin: Características principales
 Gestión completa de medicamentos: agregar, editar, eliminar y actualizar stock.
@@ -46,11 +41,8 @@ Interfaz responsive adaptable a múltiples dispositivos gracias a Bootstrap.
 | RNF‑3  | Copias de seguridad y disponibilidad: el sistema debe permitir respaldar la base de datos de Farmastock de forma automática cada 24 horas y garantizar que el servicio esté disponible al menos el 98 % de la semana laboral. |
 
 ### :pushpin: Tecnologías
-Frontend: HTML5, CSS3, JavaScript, Bootstrap 5, Angular
 
-Backend: Python Django
-
-Base de datos: MySQL
+Stack: Angular (Frontend), Django REST Framework + MySQL (Backend).
 
 
 ### :pushpin: Instalación y configuración 
