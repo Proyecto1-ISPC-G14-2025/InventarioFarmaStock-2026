@@ -6,11 +6,7 @@ Este proyecto es un Administrador Web de Inventarios para Medicamentos, diseñad
 
 La solución implementa un enfoque moderno y escalable con tecnologías web ampliamente utilizadas:
 
-Frontend: Utiliza Angular para construir una interfaz responsiva, amigable y accesible, que funciona perfectamente en dispositivos móviles y de escritorio. El diseño está enfocado en usabilidad, mostrando formularios, tablas dinámicas, botones de acción y notificaciones visuales para una experiencia óptima.
-
-Backend: Está desarrollado en Python (frameworks Django) para gestionar la lógica del servidor, autenticar usuarios, procesar solicitudes, y manejar la comunicación con la base de datos.
-
-Base de datos: Se usa MySQL como gestor relacional para almacenar de forma estructurada toda la información del inventario, usuarios, transacciones y configuraciones. Permite consultas eficientes y seguras para ordenar, filtrar y reportar datos.
+Stack: Angular (Frontend), Django REST Framework + MySQL (Backend).
 
 ### :pushpin: Características principales
 Gestión completa de medicamentos: agregar, editar, eliminar y actualizar stock.
