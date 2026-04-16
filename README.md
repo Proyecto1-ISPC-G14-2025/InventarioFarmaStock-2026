@@ -69,5 +69,5 @@ Inicia el servidor backend y abre la aplicación desde el navegador.
 <br/>
 *  - Usuario Github:  - Desarrollador
 <br/>
-* - Usuario Github:  - Desarrollador
+* Octavio Arnaudo - Usuario Github: OctavioArnaudo - Desarrollador
 <br/>
