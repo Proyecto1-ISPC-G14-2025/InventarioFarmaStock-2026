@@ -73,9 +73,10 @@ Inicia el servidor backend y abre la aplicación desde el navegador.
 <br/>
 * Cesar Ramiro Ruggieri  - Usuario Github: subrami22 - Desarrollador
 <br/>
-*  - Usuario Github: - Desarrollador
+* Jorgelina Leonora Sapp - Usuario Github: jorgelinasapp - Desarrollador
 <br/>
 *  - Usuario Github:  - Desarrollador
 <br/>
 * - Usuario Github:  - Desarrollador
 <br/>
+
