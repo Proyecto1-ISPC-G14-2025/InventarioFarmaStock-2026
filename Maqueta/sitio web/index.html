@@ -148,8 +148,9 @@
       
       <div class="carousel-container">
         <!-- Botones de navegación -->
-        <button class="carousel-nav prev" onclick="moveCarousel(-1)">❮</button>
-        <button class="carousel-nav next" onclick="moveCarousel(1)">❯</button>
+        <button class="carousel-nav prev" (click)="moveCarousel(1)">❮</button>
+        <button class="carousel-nav next" (click)="moveCarousel(1)">❯</button>
+        (click)="moveCarousel(1)"
         
         <!-- carrusel -->
         <div class="carousel-track" id="carouselTrack">
