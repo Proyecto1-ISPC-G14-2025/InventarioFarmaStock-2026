@@ -1,8 +1,19 @@
+# Entorno virtual
+venv/
 env/
+
+# Python
 __pycache__/
 *.pyc
-*.db
+
+# Base de datos
+db.sqlite3
+
+# Variables de entorno
 .env
-.DS_Store
+
+# VSCode
 .vscode/
-*.swp
+
+# Sistema
+.DS_Store
