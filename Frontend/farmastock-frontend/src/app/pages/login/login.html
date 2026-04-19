@@ -1,0 +1,47 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Inventario Farmacia FarmaStock</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" routerLink="/">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Cambio de clave</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Ayuda</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Login -->
+<div class="login-container">
+  <div class="login-card" [class.shake-animation]="shaking">
+    <h3 class="text-center mb-4">Ingreso al Sistema</h3>
+    <form (ngSubmit)="onLogin()" #loginForm="ngForm" novalidate>
+      <div class="mb-3">
+        <label class="form-label">Correo Electrónico</label>
+        <input type="email" class="form-control" name="email" [(ngModel)]="email" required
+          [class.is-invalid]="loginError">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Contraseña</label>
+        <input type="password" class="form-control" name="password" [(ngModel)]="password" required
+          [class.is-invalid]="loginError">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Rol</label>
+        <select class="form-select" name="role" [(ngModel)]="role" required
+          [class.is-invalid]="loginError">
+          <option value="">Seleccione un rol</option>
+          <option value="user">Usuario</option>
+          <option value="admin">Administrador</option>
+        </select>
+      </div>
+      <div class="d-grid mb-3">
+        <button type="submit" class="btn btn-primary">Ingresar</button>
+      </div>
+      <div class="error-message" [style.display]="loginError ? 'block' : 'none'">
+        Credenciales o rol no coincide.
+      </div>
+    </form>
+  </div>
+</div>
