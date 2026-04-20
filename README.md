@@ -47,15 +47,15 @@ Stack: Angular (Frontend), Django REST Framework + MySQL (Backend).
 
 ### :pushpin: Instalación y configuración 
 
-Clona el repositorio.
+1. Clona el repositorio.. 
 
-Configura el entorno virtual Python e instala dependencias con pip. (pip install mysql-connector-python para conexion a la base de datos)
+2. Configura el entorno virtual Python e instala dependencias con pip. (pip install mysql-connector-python para conexion a la base de datos)
 
-Configura la base de datos MySQL y variables de entorno para conexión.
+3. Configura la base de datos MySQL y variables de entorno para conexión.
 
-Ejecuta migraciones para crear tablas.
+4. Ejecuta migraciones para crear tablas.
 
-Inicia el servidor backend y abre la aplicación desde el navegador.
+5. Inicia el servidor backend y abre la aplicación desde el navegador.
 
 
 ## :muscle: Integrantes
