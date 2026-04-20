@@ -71,12 +71,12 @@ Inicia el servidor backend y abre la aplicación desde el navegador.
 <br/>
 * Nicolas Elias Calmucci - Usuario Github: Eleven1433 / Scrum master - Desarrollador
 <br/>
-* Cesar Ramiro Ruggieri  - Usuario Github: subrami22 - Desarrollador
+* Cesar Ramiro Ruggieri - Usuario Github: subrami22 - Desarrollador
 <br/>
-* Jorgelina Leonora Sapp - Usuario Github: jorgelinasapp - Desarrollador
+* Kevin Agustin Astrada - Usuario Github: Kevin-Astrada - Desarrollador
+<br/>
+*  Jorgelina Leonora Sapp Usuario Github: jorgelinasapp - Desarrollador
 <br/>
 * Octavio Arnaudo - Usuario Github: OctavioArnaudo - Desarrollador
-<br/>
-* - Usuario Github:  - Desarrollador
 <br/>
 
