@@ -32,7 +32,7 @@ DEBUG = env.bool('DEBUG', default=True)
 ALLOWED_HOSTS = []
 
 
-# Application definition
+# Definicion de aplicaciones
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -90,7 +90,7 @@ DATABASES = {
 }
 
 
-# Password validation
+# Validacion de Contraceña
 # https://docs.djangoproject.com/en/6.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
