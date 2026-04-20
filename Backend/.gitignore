@@ -3,3 +3,23 @@ __pycache__/
 *.pyc
 .env
 db.sqlite3
+=======
+# Entorno virtual
+venv/
+env/
+
+# Python
+__pycache__/
+*.pyc
+
+# Base de datos
+db.sqlite3
+
+# Variables de entorno
+.env
+
+# VSCode
+.vscode/
+
+# Sistema
+.DS_Store
