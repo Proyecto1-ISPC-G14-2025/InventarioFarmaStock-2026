@@ -67,7 +67,9 @@ Inicia el servidor backend y abre la aplicación desde el navegador.
 <br/>
 * Kevin Agustin Astrada - Usuario Github: Kevin-Astrada - Desarrollador
 <br/>
-*  - Usuario Github:  - Desarrollador
+*  Jorgelina Leonora Sapp Usuario Github: jorgelinasapp - Desarrollador
 <br/>
-* - Usuario Github:  - Desarrollador
+* Octavio Arnaudo - Usuario Github: OctavioArnaudo - Desarrollador
 <br/>
+
+*

@@ -1,81 +1,72 @@
-# :pill: InventarioFarmaStock-2026
-Administrador web de Inventarios para medicamentos. (Modulo Programador Web 2026)
+# FarmaStock Frontend
 
-## :pushpin: Descripción
-Este proyecto es un Administrador Web de Inventarios para Medicamentos, diseñado para facilitar la gestión eficiente y segura del stock en farmacias o centros de salud. La aplicación permite controlar entradas, salidas, fechas de expiración, y reportes detallados del inventario de medicamentos.
+Sistema de gestión de inventario para farmacias. Desarrollado con Angular 21 y Bootstrap 5.
 
-La solución implementa un enfoque moderno y escalable con tecnologías web ampliamente utilizadas:
+## Requisitos previos
 
-Frontend: Utiliza Angular para construir una interfaz responsiva, amigable y accesible, que funciona perfectamente en dispositivos móviles y de escritorio. El diseño está enfocado en usabilidad, mostrando formularios, tablas dinámicas, botones de acción y notificaciones visuales para una experiencia óptima.
+- [Node.js](https://nodejs.org/) v22
+- Angular CLI instalado globalmente:
 
-Backend: Está desarrollado en Python (frameworks Django) para gestionar la lógica del servidor, autenticar usuarios, procesar solicitudes, y manejar la comunicación con la base de datos.
+```bash
+npm install -g @angular/cli
+```
 
-Base de datos: Se usa MySQL como gestor relacional para almacenar de forma estructurada toda la información del inventario, usuarios, transacciones y configuraciones. Permite consultas eficientes y seguras para ordenar, filtrar y reportar datos.
+## Instalación
 
-### :pushpin: Características principales
-Gestión completa de medicamentos: agregar, editar, eliminar y actualizar stock.
+1. Clonar el repositorio:
 
-Control de fechas de expiración con alertas para medicamentos próximos a vencer.
+```bash
+git clone <URL_DEL_REPO>
+cd farmastock-frontend
+```
 
-Registro y seguimiento de movimientos de inventario (entradas y salidas).
+2. Instalar dependencias:
 
-Panel dashboard con resumen de stock y reportes visuales.
+```bash
+npm install
+```
 
-Autenticación y roles de usuario para administrar permisos.
+## Uso
 
-Reportes exportables para auditorías y análisis.
+Correr el servidor de desarrollo:
 
-Interfaz responsive adaptable a múltiples dispositivos gracias a Bootstrap.
+```bash
+ng serve
+```
 
-### :pushpin: Requisitos funcionales de Farmastock
+Luego abrí el navegador en `http://localhost:4200`
 
-| Código | Descripción |
-|--------|-------------|
-| RF‑1   | Registrar productos en stock: el sistema permitirá registrar nuevos productos (medicamentos, insumos, etc.) indicando nombre, código de barras, categoría, laboratorio, precio de compra, precio de venta, stock inicial y fecha de vencimiento (si aplica). |
-| RF‑2   | Gestionar entradas y salidas de stock: el sistema permitirá registrar entradas (compras, devoluciones al stock) y salidas (ventas, merma, devoluciones a proveedor), actualizando automáticamente el stock disponible y el historial de movimientos por producto. |
-| RF‑3   | Consultar y filtrar inventario: el sistema permitirá al usuario consultar el inventario actual, buscando productos por nombre, código de barras, categoría o lote, y mostrando cantidad disponible, precio y estado (por ejemplo, “bajo stock”, “vencido”). |
-| RF‑4   | Generar alertas de stock bajo: el sistema identificará productos que se encuentren por debajo de un nivel mínimo predefinido y mostrará alertas en pantalla, además de poder enviar notificaciones al encargado de compras o al administrador. |
-| RF‑5   | Generar reportes de stock y movimientos: el sistema permitirá generar reportes de inventario por fecha, por categoría o por proveedor, incluyendo cantidades actuales, movimientos de entrada/salida y valor total aproximado del stock. |
+## Build para producción
 
-## Requisitos no funcionales de Farmastock
+```bash
+ng build
+```
 
-| Código | Descripción |
-|--------|-------------|
-| RNF‑1  | Desempeño y tiempos de respuesta: el sistema debe mostrar resultados de búsqueda y reportes en menos de 2 segundos, incluso con un inventario de varios miles de productos y movimientos. |
-| RNF‑2  | Seguridad y control de accesos: el sistema debe asegurar que solo usuarios autorizados puedan realizar altas, bajas o modificaciones importantes en el stock, mediante un sistema de roles (por ejemplo: administrador, encargado de compras, cajero). |
-| RNF‑3  | Copias de seguridad y disponibilidad: el sistema debe permitir respaldar la base de datos de Farmastock de forma automática cada 24 horas y garantizar que el servicio esté disponible al menos el 98 % de la semana laboral. |
+Los archivos compilados quedan en la carpeta `dist/`.
 
-### :pushpin: Tecnologías
-Frontend: HTML5, CSS3, JavaScript, Bootstrap 5, Angular
+## Estructura del proyecto
 
-Backend: Python Django
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── navbar/
+│   │   └── footer/
+│   └── pages/
+│       ├── home/
+│       ├── login/
+│       ├── admin/
+│       ├── admin-usuarios/
+│       └── usuario/
+├── assets/
+│   └── img/
+└── styles.css
+```
 
-Base de datos: MySQL
+## Credenciales de prueba
 
+| Rol           | Email                  | Contraseña |
+|---------------|------------------------|------------|
+| Administrador | admin@correo.com       | admin123   |
+| Usuario       | usuario@correo.com     | user123    |
 
-### :pushpin: Instalación y configuración 
-
-Clona el repositorio.
-
-Configura el entorno virtual Python e instala dependencias con pip. (pip install mysql-connector-python para conexion a la base de datos)
-
-Configura la base de datos MySQL y variables de entorno para conexión.
-
-Ejecuta migraciones para crear tablas.
-
-Inicia el servidor backend y abre la aplicación desde el navegador.
-
-
-
-## :muscle: Integrantes
-<br/>
-* Nicolas Elias Calmucci - Usuario Github: Eleven1433 / Scrum master - Desarrollador
-<br/>
-* Cesar Ramiro Ruggieri  - Usuario Github: subrami22 - Desarrollador
-<br/>
-*  - Usuario Github: - Desarrollador
-<br/>
-*  - Usuario Github:  - Desarrollador
-<br/>
-* - Usuario Github:  - Desarrollador
-<br/>
