@@ -72,8 +72,3 @@ Inicia el servidor backend y abre la aplicación desde el navegador.
 * Octavio Arnaudo - Usuario Github: OctavioArnaudo - Desarrollador
 <br/>
 
-*
-<<<<<<< HEAD
-=======
-
->>>>>>> f9c67056a4834fc381a160762c4a70a356309055
