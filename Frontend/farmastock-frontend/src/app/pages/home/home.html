@@ -1,0 +1,177 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Inventario Farmacia FarmaStock</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="#inicio">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="#acerca">Acerca de</a></li>
+        <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
+        <li class="nav-item"><a class="nav-link" href="#farmastock">FarmaStock</a></li>
+        <li class="nav-item"><a class="nav-link" href="#galeria">Galería</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="/login">Usuarios</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="inicio" class="py-5 text-center bg-light hero-section">
+  <div class="container hero-content">
+    <h1 class="display-4 fw-bold mb-3 text-white hero-text-shadow-strong">Bienvenido a FarmaStock</h1>
+    <p class="lead mb-4 text-white hero-text-shadow-soft">Tu confianza es nuestra prioridad. Gestión efectiva de medicamentos disponibles para ti.</p>
+  </div>
+  <div class="hero-bg">
+    <img src="assets/img/FarmaBanner.jpeg" alt="Banner FarmaStock" />
+  </div>
+</section>
+
+<!-- Acerca de -->
+<section id="acerca" class="py-5">
+  <div class="container">
+    <h2 class="mb-4 text-center">Acerca de Nosotros</h2>
+    <p class="lead text-center mb-5">Somos especialistas en gestión de inventarios de medicamentos.</p>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <img src="assets/img/FarmaTablet.jpg" alt="FarmaTablet" class="about-image" />
+      </div>
+      <div class="col-md-6">
+        <p>Ofrecemos un sistema de inventario actualizado para que siempre encuentres lo que necesitas.</p>
+        <ul>
+          <li>Manejo riguroso de stock</li>
+          <li>Atención personalizada</li>
+          <li>Actualizaciones de inventario en tiempo real</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonios -->
+<section id="testimonios" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="mb-4 text-center">Testimonios</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card p-3 shadow-sm">
+          <p>"La facilidad para registrar entradas y salidas de medicamentos nos ahorra tiempo y reduce errores manuales."</p>
+          <h6 class="fw-bold mb-0">Carlos López</h6>
+          <small>Administrador de Farmacia</small>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card p-3 shadow-sm">
+          <p>"Con este sistema logramos identificar rápidamente los medicamentos próximos a vencer."</p>
+          <h6 class="fw-bold mb-0">Carlos Pérez</h6>
+          <small>Gerente de Sucursal</small>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card p-3 shadow-sm">
+          <p>"Desde que implementamos el sistema, la gestión de medicamentos es mucho más eficiente."</p>
+          <h6 class="fw-bold mb-0">Laura Gómez</h6>
+          <small>Farmacéutica</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FarmaStock -->
+<section id="farmastock" class="py-5">
+  <div class="container">
+    <h2 class="mb-4 text-center">FarmaStock</h2>
+    <div class="row">
+      <div class="col-12 text-center">
+        <p>"Administrador web de Inventarios para medicamentos."</p>
+        <div class="farmastock-image-wrapper">
+          <img src="assets/img/admin.jpg" alt="Medicamentos" class="farmastock-image" />
+        </div>
+      </div>
+    </div>
+    <br/>
+    <div class="text-center">
+      <a href="https://github.com/Proyecto1-ISPC-G14-2025/InventarioFarmaStock" class="btn btn-primary btn-lg">DESCARGAR VERSIÓN DE PRUEBA</a>
+    </div>
+  </div>
+</section>
+
+<!-- Galería -->
+<section id="galeria" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="mb-4 text-center">Galería FarmaStock</h2>
+    <div class="carousel-container">
+      <button class="carousel-nav prev" (click)="moveCarousel(-1)">❮</button>
+      <button class="carousel-nav next" (click)="moveCarousel(1)">❯</button>
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-card active">
+          <img src="assets/img/LogoFarmaStock.png" alt="FarmaStock">
+          <div class="carousel-card-content">
+            <h5>FarmaStock</h5>
+            <p>Sistema completo de gestión de inventario para farmacias.</p>
+          </div>
+        </div>
+        <div class="carousel-card">
+          <img src="assets/img/SoftwareActivos.png" alt="Software Activos">
+          <div class="carousel-card-content">
+            <h5>Software de Gestión de Activos Médicos</h5>
+            <p>Sistema de gestión de equipos médicos y control de plazos.</p>
+          </div>
+        </div>
+        <div class="carousel-card">
+          <img src="assets/img/SoftwareInventario.png" alt="Software Inventario">
+          <div class="carousel-card-content">
+            <h5>Software de Gestión de Inventarios Médicos</h5>
+            <p>Sistema para manejo inteligente de stock médico.</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-dots">
+        <span class="carousel-dot active" (click)="goToSlide(0)"></span>
+        <span class="carousel-dot" (click)="goToSlide(1)"></span>
+        <span class="carousel-dot" (click)="goToSlide(2)"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contacto -->
+<section id="contacto" class="py-5">
+  <div class="container">
+    <h2 class="mb-4 text-center">Contacto</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form (ngSubmit)="onSubmitContacto()" #contactoForm="ngForm" novalidate>
+          <div class="mb-3">
+            <label class="form-label">Nombre *</label>
+            <input type="text" class="form-control" name="nombre" ngModel required minlength="3">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Correo Electrónico *</label>
+            <input type="email" class="form-control" name="email" ngModel required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Teléfono</label>
+            <input type="tel" class="form-control" name="telefono" ngModel>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Mensaje *</label>
+            <textarea class="form-control" name="mensaje" ngModel rows="4" required minlength="10"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Grupo 14 Sistemas Informáticos. Todos los derechos reservados.</p>
+  </div>
+</footer>
