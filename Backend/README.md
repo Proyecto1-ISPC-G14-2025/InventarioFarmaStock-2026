@@ -15,7 +15,7 @@ Base de datos: Se usa MySQL como gestor relacional para almacenar de forma estru
 ### :pushpin: Características principales
 Gestión completa de medicamentos: agregar, editar, eliminar y actualizar stock.
 
-Control de fechas de expiración con alertas para medicamentos próximos a vencer.
+Control de fechas de expiración con alertas para medicamentos que esten próximos a vencer.
 
 Registro y seguimiento de movimientos de inventario (entradas y salidas).
 
@@ -31,7 +31,7 @@ Interfaz responsive adaptable a múltiples dispositivos gracias a Bootstrap.
 
 | Código | Descripción |
 |--------|-------------|
-| RF‑1   | Registrar productos en stock: el sistema permitirá registrar nuevos productos (medicamentos, insumos, etc.) indicando nombre, código de barras, categoría, laboratorio, precio de compra, precio de venta, stock inicial y fecha de vencimiento (si aplica). |
+| RF‑1   | Registrar productos en stock: el sistema permitirá registrar productos nuevos (medicamentos, insumos, etc.) indicando nombre, código de barras, categoría, laboratorio, precio de compra, precio de venta, stock inicial y fecha de vencimiento (si aplica). |
 | RF‑2   | Gestionar entradas y salidas de stock: el sistema permitirá registrar entradas (compras, devoluciones al stock) y salidas (ventas, merma, devoluciones a proveedor), actualizando automáticamente el stock disponible y el historial de movimientos por producto. |
 | RF‑3   | Consultar y filtrar inventario: el sistema permitirá al usuario consultar el inventario actual, buscando productos por nombre, código de barras, categoría o lote, y mostrando cantidad disponible, precio y estado (por ejemplo, “bajo stock”, “vencido”). |
 | RF‑4   | Generar alertas de stock bajo: el sistema identificará productos que se encuentren por debajo de un nivel mínimo predefinido y mostrará alertas en pantalla, además de poder enviar notificaciones al encargado de compras o al administrador. |
@@ -46,6 +46,7 @@ Interfaz responsive adaptable a múltiples dispositivos gracias a Bootstrap.
 | RNF‑3  | Copias de seguridad y disponibilidad: el sistema debe permitir respaldar la base de datos de Farmastock de forma automática cada 24 horas y garantizar que el servicio esté disponible al menos el 98 % de la semana laboral. |
 
 ### :pushpin: Tecnologías
+
 Frontend: HTML5, CSS3, JavaScript, Bootstrap 5, Angular
 
 Backend: Python Django
@@ -71,7 +72,7 @@ Inicia el servidor backend y abre la aplicación desde el navegador.
 <br/>
 * Nicolas Elias Calmucci - Usuario Github: Eleven1433 / Scrum master - Desarrollador
 <br/>
-* Cesar Ramiro Ruggieri - Usuario Github: subrami22 - Desarrollador
+* Cesar Ramiro Ruggieri - Usuario Github: subrami22 - Desarrollador 
 <br/>
 * Kevin Agustin Astrada - Usuario Github: Kevin-Astrada - Desarrollador
 <br/>
