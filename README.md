@@ -49,7 +49,7 @@ Stack: Angular (Frontend), Django REST Framework + MySQL (Backend).
 
 Clona el repositorio.
 
-Configura el entorno virtual Python e instala dependencias con pip. (pip install mysql-connector-python para conexion a la base de datos)
+Configura el entorno virtual Python e instala dependencias con pip. (pip install PyMySQL para conexion a la base de datos)
 
 Configura la base de datos MySQL y variables de entorno para conexión.
 
