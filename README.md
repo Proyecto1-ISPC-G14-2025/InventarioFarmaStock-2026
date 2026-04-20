@@ -58,7 +58,6 @@ Ejecuta migraciones para crear tablas.
 Inicia el servidor backend y abre la aplicación desde el navegador.
 
 
-
 ## :muscle: Integrantes
 <br/>
 * Nicolas Elias Calmucci - Usuario Github: Eleven1433 / Scrum master - Desarrollador
@@ -71,6 +70,3 @@ Inicia el servidor backend y abre la aplicación desde el navegador.
 <br/>
 * Octavio Arnaudo - Usuario Github: OctavioArnaudo - Desarrollador
 <br/>
-
-*
-

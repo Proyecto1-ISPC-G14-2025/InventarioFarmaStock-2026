@@ -1,10 +1,8 @@
-# :pill: InventarioFarmaStock-2026
-Administrador web de Inventarios para medicamentos. (Modulo Programador Web 2026)
+# FarmaStock Frontend
 
-## :pushpin: Descripción
-Este proyecto es un Administrador Web de Inventarios para Medicamentos, diseñado para facilitar la gestión eficiente y segura del stock en farmacias o centros de salud. La aplicación permite controlar entradas, salidas, fechas de expiración, y reportes detallados del inventario de medicamentos.
+Sistema de gestión de inventario para farmacias. Desarrollado con Angular 21 y Bootstrap 5.
 
-La solución implementa un enfoque moderno y escalable con tecnologías web ampliamente utilizadas:
+## Requisitos previos
 
 Frontend: Utiliza Angular para construir una interfaz responsiva, amigable y accesible, que funciona perfectamente en dispositivos móviles y de escritorio. El diseño está enfocado en usabilidad, mostrando formularios, tablas dinámicas, botones de acción y notificaciones visuales para una experiencia óptima.
 
@@ -43,15 +41,7 @@ Interfaz responsive adaptable a múltiples dispositivos gracias a Bootstrap.
 |--------|-------------|
 | RNF‑1  | Desempeño y tiempos de respuesta: el sistema debe mostrar resultados de búsqueda y reportes en menos de 2 segundos, incluso con un inventario de varios miles de productos y movimientos. |
 | RNF‑2  | Seguridad y control de accesos: el sistema debe asegurar que solo usuarios autorizados puedan realizar altas, bajas o modificaciones importantes en el stock, mediante un sistema de roles (por ejemplo: administrador, encargado de compras, cajero). |
-| RNF‑3  | Copias de seguridad y disponibilidad: el sistema debe permitir respaldar la base de datos de Farmastock de forma automática cada 24 horas y garantizar que el servicio esté disponible al menos el 98 % de la semana 
-laboral. |
-
-### :pushpin: Historia de usuario de Farmastock
-| H.U-1  | Como administrador, quiero registrar nuevos medicamentos en el sistema para mantener actualizado el inventario. |
-| H.U-2  | Como encargadO, quiero recibir alertas de productos próximos a vencer para evitar pérdidas. |
-| H.U-3  | Como usuario del sistema, quiero consultar el stock disponible para conocer la cantidad de medicamentos en tiempo real.|
-
-
+| RNF‑3  | Copias de seguridad y disponibilidad: el sistema debe permitir respaldar la base de datos de Farmastock de forma automática cada 24 horas y garantizar que el servicio esté disponible al menos el 98 % de la semana laboral. |
 
 ### :pushpin: Tecnologías
 Frontend: HTML5, CSS3, JavaScript, Bootstrap 5, Angular
@@ -63,15 +53,15 @@ Base de datos: MySQL
 
 ### :pushpin: Instalación y configuración 
 
-1. Clona el repositorio.
+Clona el repositorio.
 
-2. Configura el entorno virtual Python e instala dependencias con pip. (pip install mysql-connector-python para conexion a la base de datos)
+Configura el entorno virtual Python e instala dependencias con pip. (pip install mysql-connector-python para conexion a la base de datos)
 
-3. Configura la base de datos MySQL y variables de entorno para conexión.
+Configura la base de datos MySQL y variables de entorno para conexión.
 
-4. Ejecuta migraciones para crear tablas.
+Ejecuta migraciones para crear tablas.
 
-5. Inicia el servidor backend y abre la aplicación desde el navegador.
+Inicia el servidor backend y abre la aplicación desde el navegador.
 
 
 
@@ -81,7 +71,7 @@ Base de datos: MySQL
 <br/>
 * Cesar Ramiro Ruggieri  - Usuario Github: subrami22 - Desarrollador
 <br/>
-* Jorgelina Leonora Sapp: Usuario Github:jorgelinasapp - Desarrollador
+*  - Usuario Github: - Desarrollador
 <br/>
 *  - Usuario Github:  - Desarrollador
 <br/>
