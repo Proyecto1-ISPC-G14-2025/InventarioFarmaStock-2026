@@ -73,3 +73,4 @@ Stack: Angular (Frontend), Django REST Framework + MySQL (Backend).
 <br/>
 * Octavio Arnaudo - Usuario Github: OctavioArnaudo - Desarrollador
 <br/>
+Actualización menor
