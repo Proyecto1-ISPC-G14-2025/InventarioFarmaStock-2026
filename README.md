@@ -9,7 +9,7 @@ La solución implementa un enfoque moderno y escalable con tecnologías web ampl
 
 
 
-### 2.Características principales del Proyecto
+## 2.Características principales del Proyecto
 Gestión completa de medicamentos: agregar, editar, eliminar y actualizar stock.
 
 Control de fechas de expiración con alertas para medicamentos próximos a vencer.
@@ -24,13 +24,13 @@ Reportes exportables para auditorías y análisis.
 
 Interfaz responsive adaptable a múltiples dispositivos gracias a Bootstrap.
 
-### 3.Instalación y configuración del Proyecto
+## 3.Instalación y configuración del Proyecto
 
 COMPLETAR para front y back  
 
 ## 4.Requisitos funcionales y no funcionales del Proyecto
 
-### Requisitos funcionales de Farmastock
+## Requisitos funcionales de Farmastock
 
 | Código | Descripción |
 |--------|-------------|
@@ -40,7 +40,7 @@ COMPLETAR para front y back
 | RF‑4   | Generar alertas de stock bajo: el sistema identificará productos que se encuentren por debajo de un nivel mínimo predefinido y mostrará alertas en pantalla, además de poder enviar notificaciones al encargado de compras o al administrador. |
 | RF‑5   | Generar reportes de stock y movimientos: el sistema permitirá generar reportes de inventario por fecha, por categoría o por proveedor, incluyendo cantidades actuales, movimientos de entrada/salida y valor total aproximado del stock. |
 
-### Requisitos no funcionales de Farmastock
+## Requisitos no funcionales de Farmastock
 
 | Código | Descripción |
 |--------|-------------|
@@ -48,7 +48,7 @@ COMPLETAR para front y back
 | RNF‑2  | Seguridad y control de accesos: el sistema debe asegurar que solo usuarios autorizados puedan realizar altas, bajas o modificaciones importantes en el stock, mediante un sistema de roles (por ejemplo: administrador, encargado de compras, cajero). |
 | RNF‑3  | Copias de seguridad y disponibilidad: el sistema debe permitir respaldar la base de datos de Farmastock de forma automática cada 24 horas y garantizar que el servicio esté disponible al menos el 98 % de la semana laboral. |
 
-### 5.Tecnologías
+## 5.Tecnologías
 
 * Frontend: Angular
 * Backend: Python y Django Rest Framework
