@@ -26,9 +26,9 @@ Interfaz responsive adaptable a múltiples dispositivos gracias a Bootstrap.
 
 COMPLETAR para front y back  
 
-### :pushpin: 4.Requisitos funcionales y no funcionales de Farmastock
+## :pushpin: 4.Requisitos funcionales y no funcionales de Farmastock
 
-## Requisitos funcionales de Farmastock
+### Requisitos funcionales de Farmastock
 
 | Código | Descripción |
 |--------|-------------|
@@ -38,7 +38,7 @@ COMPLETAR para front y back
 | RF‑4   | Generar alertas de stock bajo: el sistema identificará productos que se encuentren por debajo de un nivel mínimo predefinido y mostrará alertas en pantalla, además de poder enviar notificaciones al encargado de compras o al administrador. |
 | RF‑5   | Generar reportes de stock y movimientos: el sistema permitirá generar reportes de inventario por fecha, por categoría o por proveedor, incluyendo cantidades actuales, movimientos de entrada/salida y valor total aproximado del stock. |
 
-## Requisitos no funcionales de Farmastock
+### Requisitos no funcionales de Farmastock
 
 | Código | Descripción |
 |--------|-------------|
