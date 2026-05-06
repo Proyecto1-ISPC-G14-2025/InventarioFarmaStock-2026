@@ -28,7 +28,7 @@ COMPLETAR para front y back
 
 ### :pushpin: 4.Requisitos funcionales y no funcionales de Farmastock
 
-### Requisitos funcionales de Farmastock
+## Requisitos funcionales de Farmastock
 
 | Código | Descripción |
 |--------|-------------|
