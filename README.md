@@ -22,7 +22,7 @@ Reportes exportables para auditorías y análisis.
 
 Interfaz responsive adaptable a múltiples dispositivos gracias a Bootstrap.
 
-### :pushpin:3.Instalación y configuración 
+### :pushpin:3.Instalación y configuración del Proyecto
 
 COMPLETAR para front y back  
 
