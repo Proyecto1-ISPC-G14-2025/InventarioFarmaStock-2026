@@ -1,4 +1,4 @@
-[![Última actualización](https://img.shields.io/github/last-commit/Proyecto1-ISPC-G14-2025/InventarioFarmaStock-2026/main?color=gree&style=for-the-badge)](https://github.com/Proyecto1-ISPC-G14-2025/InventarioFarmaStock-2026/commits/main)
+[![Última actualización](https://img.shields.io/github/last-commit/Proyecto1-ISPC-G14-2025/InventarioFarmaStock-2026/main?color=gree&style=social)](https://github.com/Proyecto1-ISPC-G14-2025/InventarioFarmaStock-2026/commits/main)
 
 # :pill: InventarioFarmaStock-2026
 Administrador web de Inventarios para medicamentos. (Modulo Programador Web 2026)
