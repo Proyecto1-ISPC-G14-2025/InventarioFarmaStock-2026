@@ -24,8 +24,7 @@ Interfaz responsive adaptable a múltiples dispositivos gracias a Bootstrap.
 
 ### :pushpin:3.Instalación y configuración 
 
-Clona el repositorio.
-COMPLETAR 
+COMPLETAR para front y back  
 
 
 ### :pushpin: 4.Requisitos funcionales de Farmastock
