@@ -1,3 +1,5 @@
+[![Última actualización](https://img.shields.io/github/last-commit/eleven1433/InventarioFarmaStock-2026/main?color=gree&style=for-the-badge)](https://github.com/eleven1433/InventarioFarmaStock-2026/commits/main)
+
 # :pill: InventarioFarmaStock-2026
 Administrador web de Inventarios para medicamentos. (Modulo Programador Web 2026)
 
