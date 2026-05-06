@@ -26,8 +26,9 @@ Interfaz responsive adaptable a múltiples dispositivos gracias a Bootstrap.
 
 COMPLETAR para front y back  
 
-
 ### :pushpin: 4.Requisitos funcionales de Farmastock
+
+### Requisitos funcionales de Farmastock
 
 | Código | Descripción |
 |--------|-------------|
