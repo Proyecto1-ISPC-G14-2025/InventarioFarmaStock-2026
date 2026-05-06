@@ -1,13 +1,13 @@
 # :pill: InventarioFarmaStock-2026
 Administrador web de Inventarios para medicamentos. (Modulo Programador Web 2026)
 
-## :pushpin: Descripción
+## :pushpin: Descripción del Proyecto
 Este proyecto es un Administrador Web de Inventarios para Medicamentos, diseñado para facilitar la gestión eficiente y segura del stock en farmacias o centros de salud. La aplicación permite controlar entradas, salidas, fechas de expiración, y reportes detallados del inventario de medicamentos.
 La solución implementa un enfoque moderno y escalable con tecnologías web ampliamente utilizadas.
 
 
 
-### :pushpin: Características principales
+### :pushpin: Características principales del Proyecto
 Gestión completa de medicamentos: agregar, editar, eliminar y actualizar stock.
 
 Control de fechas de expiración con alertas para medicamentos próximos a vencer.
@@ -21,6 +21,20 @@ Autenticación y roles de usuario para administrar permisos.
 Reportes exportables para auditorías y análisis.
 
 Interfaz responsive adaptable a múltiples dispositivos gracias a Bootstrap.
+
+### :pushpin: Instalación y configuración 
+
+Clona el repositorio.
+
+Configura el entorno virtual Python e instala dependencias con pip. (pip install PyMySQL para conexion a la base de datos)
+
+Configura la base de datos MySQL y variables de entorno para conexión.
+
+Ejecuta migraciones para crear tablas.
+
+Inicia el servidor backend y abre la aplicación desde el navegador.
+
+
 
 ### :pushpin: Requisitos funcionales de Farmastock
 
@@ -43,19 +57,6 @@ Interfaz responsive adaptable a múltiples dispositivos gracias a Bootstrap.
 ### :pushpin: Tecnologías
 
 Stack: Angular (Frontend), Django REST Framework + MySQL (Backend).
-
-
-### :pushpin: Instalación y configuración 
-
-Clona el repositorio.
-
-Configura el entorno virtual Python e instala dependencias con pip. (pip install PyMySQL para conexion a la base de datos)
-
-Configura la base de datos MySQL y variables de entorno para conexión.
-
-Ejecuta migraciones para crear tablas.
-
-Inicia el servidor backend y abre la aplicación desde el navegador.
 
 
 ## :muscle: Integrantes
