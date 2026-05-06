@@ -1,13 +1,13 @@
 # :pill: InventarioFarmaStock-2026
 Administrador web de Inventarios para medicamentos. (Modulo Programador Web 2026)
 
-## :pushpin: Descripción del Proyecto
+## :pushpin: 1. Descripción del Proyecto
 Este proyecto es un Administrador Web de Inventarios para Medicamentos, diseñado para facilitar la gestión eficiente y segura del stock en farmacias o centros de salud. La aplicación permite controlar entradas, salidas, fechas de expiración, y reportes detallados del inventario de medicamentos.
 La solución implementa un enfoque moderno y escalable con tecnologías web ampliamente utilizadas.
 
 
 
-### :pushpin: Características principales del Proyecto
+### :pushpin: 2.Características principales del Proyecto
 Gestión completa de medicamentos: agregar, editar, eliminar y actualizar stock.
 
 Control de fechas de expiración con alertas para medicamentos próximos a vencer.
@@ -22,21 +22,13 @@ Reportes exportables para auditorías y análisis.
 
 Interfaz responsive adaptable a múltiples dispositivos gracias a Bootstrap.
 
-### :pushpin: Instalación y configuración 
+### :pushpin:3.Instalación y configuración 
 
 Clona el repositorio.
-
-Configura el entorno virtual Python e instala dependencias con pip. (pip install PyMySQL para conexion a la base de datos)
-
-Configura la base de datos MySQL y variables de entorno para conexión.
-
-Ejecuta migraciones para crear tablas.
-
-Inicia el servidor backend y abre la aplicación desde el navegador.
+COMPLETAR 
 
 
-
-### :pushpin: Requisitos funcionales de Farmastock
+### :pushpin: 4.Requisitos funcionales de Farmastock
 
 | Código | Descripción |
 |--------|-------------|
@@ -54,12 +46,15 @@ Inicia el servidor backend y abre la aplicación desde el navegador.
 | RNF‑2  | Seguridad y control de accesos: el sistema debe asegurar que solo usuarios autorizados puedan realizar altas, bajas o modificaciones importantes en el stock, mediante un sistema de roles (por ejemplo: administrador, encargado de compras, cajero). |
 | RNF‑3  | Copias de seguridad y disponibilidad: el sistema debe permitir respaldar la base de datos de Farmastock de forma automática cada 24 horas y garantizar que el servicio esté disponible al menos el 98 % de la semana laboral. |
 
-### :pushpin: Tecnologías
+### :pushpin: 5. Tecnologías
 
-Stack: Angular (Frontend), Django REST Framework + MySQL (Backend).
+* Frontend: Angular
+* Backend: Python y Django Rest Framework
+* Base de Datos: MySQL
+* Estilos: CSS3 y Bootstrap
 
 
-## :muscle: Integrantes
+## :muscle:6.Integrantes
 <br/>
 * Nicolas Elias Calmucci - Usuario Github: Eleven1433 / Scrum master - Desarrollador
 <br/>
