@@ -1,70 +1,237 @@
-[![Última actualización](https://img.shields.io/github/last-commit/Proyecto1-ISPC-G14-2025/InventarioFarmaStock-2026/main?color=gree&style=social)](https://github.com/Proyecto1-ISPC-G14-2025/InventarioFarmaStock-2026/commits/main)
+# 💊 InventarioFarmaStock-2026
 
-# :pill: InventarioFarmaStock-2026
-Administrador web de Inventarios para medicamentos. (Modulo Programador Web 2026)
+Administrador web de inventarios para medicamentos, diseñado para facilitar la gestión eficiente y segura del stock en farmacias o centros de salud.
 
-## 1. Descripción del Proyecto
-Este proyecto es un Administrador Web de Inventarios para Medicamentos, diseñado para facilitar la gestión eficiente y segura del stock en farmacias o centros de salud. La aplicación permite controlar entradas, salidas, fechas de expiración, y reportes detallados del inventario de medicamentos.
-La solución implementa un enfoque moderno y escalable con tecnologías web ampliamente utilizadas.
+---
 
+## Descripción del Proyecto
 
+**FarmaStock** es una aplicación web full-stack que permite controlar el inventario de medicamentos en tiempo real. El sistema permite registrar entradas y salidas de productos, controlar fechas de vencimiento, gestionar usuarios con distintos roles y generar reportes de stock.
 
-## 2.Características principales del Proyecto
-Gestión completa de medicamentos: agregar, editar, eliminar y actualizar stock.
+La solución implementa una arquitectura moderna con separación clara entre frontend y backend:
 
-Control de fechas de expiración con alertas para medicamentos próximos a vencer.
+- **Frontend**: Angular (SPA con ruteo y componentes reutilizables)
+- **Backend**: Django REST Framework (API RESTful con autenticación por roles)
+- **Base de datos**: MySQL
 
-Registro y seguimiento de movimientos de inventario (entradas y salidas).
+---
 
-Panel dashboard con resumen de stock y reportes visuales.
+## Integrantes del equipo
 
-Autenticación y roles de usuario para administrar permisos.
+| Nombre | GitHub | Rol |
+|--------|--------|-----|
+| Nicolas Elias Calmucci | [Eleven1433](https://github.com/Eleven1433) | Scrum Master / Desarrollador |
+| Cesar Ramiro Ruggieri | [subrami22](https://github.com/subrami22) | Desarrollador |
+| Kevin Agustin Astrada | [Kevin-Astrada](https://github.com/Kevin-Astrada) | Desarrollador |
+| Jorgelina Leonora Sapp | [jorgelinasapp](https://github.com/jorgelinasapp) | Desarrolladora |
+| Octavio Arnaudo | [OctavioArnaudo](https://github.com/OctavioArnaudo) | Desarrollador |
 
-Reportes exportables para auditorías y análisis.
+---
 
-Interfaz responsive adaptable a múltiples dispositivos gracias a Bootstrap.
-
-## 3.Instalación y configuración del Proyecto
-
-COMPLETAR para front y back  
-
-## 4.Requisitos funcionales y no funcionales del Proyecto
-
-## Requisitos funcionales de Farmastock
+## Requerimientos funcionales
 
 | Código | Descripción |
 |--------|-------------|
-| RF‑1   | Registrar productos en stock: el sistema permitirá registrar nuevos productos (medicamentos, insumos, etc.) indicando nombre, código de barras, categoría, laboratorio, precio de compra, precio de venta, stock inicial y fecha de vencimiento (si aplica). |
-| RF‑2   | Gestionar entradas y salidas de stock: el sistema permitirá registrar entradas (compras, devoluciones al stock) y salidas (ventas, merma, devoluciones a proveedor), actualizando automáticamente el stock disponible y el historial de movimientos por producto. |
-| RF‑3   | Consultar y filtrar inventario: el sistema permitirá al usuario consultar el inventario actual, buscando productos por nombre, código de barras, categoría o lote, y mostrando cantidad disponible, precio y estado (por ejemplo, “bajo stock”, “vencido”). |
-| RF‑4   | Generar alertas de stock bajo: el sistema identificará productos que se encuentren por debajo de un nivel mínimo predefinido y mostrará alertas en pantalla, además de poder enviar notificaciones al encargado de compras o al administrador. |
-| RF‑5   | Generar reportes de stock y movimientos: el sistema permitirá generar reportes de inventario por fecha, por categoría o por proveedor, incluyendo cantidades actuales, movimientos de entrada/salida y valor total aproximado del stock. |
+| RF-1 | Registrar productos en stock (nombre, código de barras, categoría, laboratorio, precio, stock inicial, fecha de vencimiento) |
+| RF-2 | Gestionar entradas y salidas de stock, actualizando el historial de movimientos |
+| RF-3 | Consultar y filtrar inventario por nombre, código, categoría o lote |
+| RF-4 | Generar alertas de stock bajo cuando un producto cae por debajo del mínimo definido |
+| RF-5 | Generar reportes de stock y movimientos por fecha, categoría o proveedor |
 
-## Requisitos no funcionales de Farmastock
+## Requerimientos no funcionales
 
 | Código | Descripción |
 |--------|-------------|
-| RNF‑1  | Desempeño y tiempos de respuesta: el sistema debe mostrar resultados de búsqueda y reportes en menos de 2 segundos, incluso con un inventario de varios miles de productos y movimientos. |
-| RNF‑2  | Seguridad y control de accesos: el sistema debe asegurar que solo usuarios autorizados puedan realizar altas, bajas o modificaciones importantes en el stock, mediante un sistema de roles (por ejemplo: administrador, encargado de compras, cajero). |
-| RNF‑3  | Copias de seguridad y disponibilidad: el sistema debe permitir respaldar la base de datos de Farmastock de forma automática cada 24 horas y garantizar que el servicio esté disponible al menos el 98 % de la semana laboral. |
+| RNF-1 | Tiempos de respuesta menores a 2 segundos en búsquedas y reportes |
+| RNF-2 | Control de acceso por roles: administrador, encargado de compras, cajero |
+| RNF-3 | Backup automático de la base de datos cada 24 horas, disponibilidad ≥ 98% |
 
-## 5.Tecnologías
+---
 
-* Frontend: Angular
-* Backend: Python y Django Rest Framework
-* Base de Datos: MySQL
-* Estilos: CSS3 y Bootstrap
+## Estructura del repositorio
 
+```
+InventarioFarmaStock-2026/
+├── Backend/                  # API con Django REST Framework
+│   ├── farmastock/           # Proyecto principal Django
+│   ├── inventario/           # App: modelos, vistas, serializers, URLs
+│   ├── manage.py
+│   ├── requirements.txt
+│   ├── .env_modelo           # Variables de entorno de ejemplo
+│   └── .gitignore
+├── Frontend/                 # Aplicación Angular
+│   ├── farmastock-frontend/
+│   │   ├── src/
+│   │   │   ├── app/
+│   │   │   │   ├── components/   # Navbar, Footer
+│   │   │   │   ├── pages/        # Home, Login, Admin, Usuario
+│   │   │   │   ├── app.routes.ts
+│   │   │   │   └── app.config.ts
+│   │   │   └── assets/img/
+│   │   ├── package.json
+│   │   └── angular.json
+│   ├── .gitignore
+│   └── README.md
+├── Maqueta/                  # Prototipo HTML estático
+└── README.md                 # Este archivo
+```
 
-## 6.Integrantes
-<br/>
-* Nicolas Elias Calmucci - Usuario Github: Eleven1433 / Scrum master - Desarrollador
-<br/>
-* Cesar Ramiro Ruggieri - Usuario Github: subrami22 - Desarrollador
-<br/>
-* Kevin Agustin Astrada - Usuario Github: Kevin-Astrada - Desarrollador
-<br/>
-*  Jorgelina Leonora Sapp Usuario Github: jorgelinasapp - Desarrollador
-<br/>
-* Octavio Arnaudo - Usuario Github: OctavioArnaudo - Desarrollador
-<br/>
+---
+
+## ⚙️ Instrucciones de instalación
+
+### Requisitos previos
+
+- Python 3.10 o superior
+- Node.js 18 o superior y npm
+- MySQL 8.0 o superior
+- Git
+
+---
+
+### Backend (Django REST Framework)
+
+#### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/TU_USUARIO/InventarioFarmaStock-2026.git
+cd InventarioFarmaStock-2026/Backend
+```
+
+#### 2. Crear y activar entorno virtual
+
+```bash
+python -m venv venv
+
+# Windows
+venv\Scripts\activate
+
+# Linux / macOS
+source venv/bin/activate
+```
+
+#### 3. Instalar dependencias
+
+```bash
+pip install -r requirements.txt
+```
+
+#### 4. Configurar variables de entorno
+
+Copiar el archivo de ejemplo y completar los valores:
+
+```bash
+cp .env_modelo .env
+```
+
+Editar `.env` con los datos de tu entorno:
+
+```env
+SECRET_KEY=tu_clave_secreta_django
+DEBUG=True
+DB_NAME=farmastock_db
+DB_USER=tu_usuario_mysql
+DB_PASSWORD=tu_contraseña_mysql
+DB_HOST=localhost
+DB_PORT=3306
+```
+
+#### 5. Crear la base de datos en MySQL
+
+```sql
+CREATE DATABASE farmastock_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+#### 6. Ejecutar migraciones
+
+```bash
+cd farmastock
+python manage.py migrate
+```
+
+#### 7. Iniciar el servidor backend
+
+```bash
+python manage.py runserver
+```
+
+El servidor estará disponible en: `http://localhost:8000`
+
+Endpoint de prueba: `http://localhost:8000/api/medicamentos/`
+
+---
+
+### Frontend (Angular)
+
+#### 1. Ingresar a la carpeta del frontend
+
+```bash
+cd InventarioFarmaStock-2026/Frontend/farmastock-frontend
+```
+
+#### 2. Instalar dependencias
+
+```bash
+npm install
+```
+
+#### 3. Iniciar el servidor de desarrollo
+
+```bash
+ng serve
+```
+
+La aplicación estará disponible en: `http://localhost:4200`
+
+---
+
+## Uso básico del sistema
+
+### Rutas disponibles en el Frontend
+
+| Ruta | Descripción |
+|------|-------------|
+| `/` | Landing page / Home |
+| `/login` | Inicio de sesión |
+| `/admin` | Panel de administración |
+| `/admin-usuarios` | Gestión de usuarios (solo admin) |
+| `/usuario` | Vista del usuario regular |
+
+### Credenciales de prueba (desarrollo)
+
+> ⚠️ Estas credenciales son solo para el entorno de desarrollo local. No usar en producción.
+
+| Rol | Email | Contraseña |
+|-----|-------|------------|
+| Administrador | admin@correo.com | admin123 |
+| Usuario | usuario@correo.com | user123 |
+
+### Endpoints del Backend
+
+| Método | URL | Descripción |
+|--------|-----|-------------|
+| GET | `/api/medicamentos/` | Listar todos los medicamentos |
+| POST | `/api/medicamentos/` | Crear un medicamento |
+| GET | `/api/medicamentos/{id}/` | Obtener un medicamento |
+| PUT | `/api/medicamentos/{id}/` | Actualizar un medicamento |
+| DELETE | `/api/medicamentos/{id}/` | Eliminar un medicamento |
+
+---
+
+## Tecnologías utilizadas
+
+| Capa | Tecnología | Versión |
+|------|-----------|---------|
+| Frontend | Angular | 19+ |
+| Frontend (estilos) | Bootstrap | 5 |
+| Backend | Django | 6.0 |
+| Backend API | Django REST Framework | 3.17 |
+| Base de datos | MySQL | 8.0 |
+| Conector Python-MySQL | mysqlclient | 2.2 |
+| Variables de entorno | python-dotenv | 1.2 |
+
+---
+
+## Licencia
+
+Proyecto académico — Programación II / Programación Web II / Desarrollo de Software — 2026.
