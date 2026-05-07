@@ -4,7 +4,7 @@
 Administrador web de Inventarios para medicamentos. (Modulo Programador Web 2026)
 
 ## 1. Descripción del Proyecto
-Farmastock es una solución web moderna para la gestión de inventarios de medicamentos, diseñada para farmacias y centros de salud que buscan optimizar el control de stock, vencimientos, movimientos de productos y usuarios en un solo lugar. Con una interfaz intuitiva, segura y adaptable, Farmastock mejora la organización del inventario y facilita una administración más eficiente, confiable y profesional.
+Farmastock es una plataforma web diseñada para modernizar la gestión de inventarios de medicamentos en farmacias y centros de salud. Centraliza el control de stock, vencimientos, movimientos y usuarios en una solución ágil, escalable y segura, pensada para mejorar la eficiencia operativa y ofrecer visibilidad en tiempo real del inventario.
 
 ## 2.Instalación y configuración del Proyecto
 
