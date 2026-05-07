@@ -4,31 +4,29 @@
 Administrador web de Inventarios para medicamentos. (Modulo Programador Web 2026)
 
 ## 1. Descripción del Proyecto
-Este proyecto es un Administrador Web de Inventarios para Medicamentos, diseñado para facilitar la gestión eficiente y segura del stock en farmacias o centros de salud. La aplicación permite controlar entradas, salidas, fechas de expiración, y reportes detallados del inventario de medicamentos.
-La solución implementa un enfoque moderno y escalable con tecnologías web ampliamente utilizadas.
+Descripción del proyecto
+Farmastock es un administrador web de inventarios de medicamentos diseñado para facilitar la gestión eficiente, segura y organizada del stock en farmacias, hospitales y centros de salud. La aplicación permite controlar ingresos, egresos, fechas de vencimiento y generar reportes detallados del inventario, ayudando a mejorar el seguimiento de los medicamentos y la toma de decisiones. Su desarrollo se basa en una arquitectura web moderna, escalable y adaptada a las necesidades del sector salud.
 
-
-
-## 2.Características principales del Proyecto
+## Características principales
 Gestión completa de medicamentos: agregar, editar, eliminar y actualizar stock.
 
-Control de fechas de expiración con alertas para medicamentos próximos a vencer.
+Control de fechas de expiración con alertas para productos próximos a vencer.
 
-Registro y seguimiento de movimientos de inventario (entradas y salidas).
+Registro y seguimiento de movimientos de inventario, como entradas y salidas.
 
-Panel dashboard con resumen de stock y reportes visuales.
+Panel tipo dashboard con resumen del stock y reportes visuales.
 
-Autenticación y roles de usuario para administrar permisos.
+Autenticación de usuarios y control de roles y permisos.
 
-Reportes exportables para auditorías y análisis.
+Generación de reportes exportables para auditorías y análisis.
 
-Interfaz responsive adaptable a múltiples dispositivos gracias a Bootstrap.
+Interfaz responsive adaptable a distintos dispositivos gracias a Bootstrap.
 
-## 3.Instalación y configuración del Proyecto
+## 2.Instalación y configuración del Proyecto
 
 COMPLETAR para front y back  
 
-## 4.Requisitos funcionales y no funcionales del Proyecto
+## 3.Requisitos funcionales y no funcionales del Proyecto
 
 ## Requisitos funcionales de Farmastock
 
@@ -48,7 +46,7 @@ COMPLETAR para front y back
 | RNF‑2  | Seguridad y control de accesos: el sistema debe asegurar que solo usuarios autorizados puedan realizar altas, bajas o modificaciones importantes en el stock, mediante un sistema de roles (por ejemplo: administrador, encargado de compras, cajero). |
 | RNF‑3  | Copias de seguridad y disponibilidad: el sistema debe permitir respaldar la base de datos de Farmastock de forma automática cada 24 horas y garantizar que el servicio esté disponible al menos el 98 % de la semana laboral. |
 
-## 5.Tecnologías
+## 4.Tecnologías
 
 * Frontend: Angular
 * Backend: Python y Django Rest Framework
@@ -56,7 +54,7 @@ COMPLETAR para front y back
 * Estilos: CSS3 y Bootstrap
 
 
-## 6.Integrantes
+## 5.Integrantes
 <br/>
 * Nicolas Elias Calmucci - Usuario Github: Eleven1433 / Scrum master - Desarrollador
 <br/>
