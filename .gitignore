@@ -1,4 +1,6 @@
 # --- DEPENDENCIAS FRONTEND ---
+# --- DEPENDENCIAS (FRONTEND) ---
+
 node_modules/
 dist/
 .angular/
@@ -13,15 +15,26 @@ venv/
 env/
 .venv/
 __pycache__/
+#--- ARCHIVOS DE SISTEMA ---
+.DS_Store
+Thumbs.db
+
+#--- ENTORNOS VIRTUALES (BACKEND) ---
+venv/
+env/
+.venv/
+pycache/
 *.py[cod]
 db.sqlite3
 .env
 
 # --- DEPENDENCIAS (FRONTEND) ---
+#--- DEPENDENCIAS (FRONTEND) ---
 node_modules/
 .angular/
 dist/
 
 # --- IDEs / EDITORES ---
+#--- IDEs / EDITORES ---
 .vscode/
 .idea/
