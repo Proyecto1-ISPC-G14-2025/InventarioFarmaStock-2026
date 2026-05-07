@@ -54,15 +54,4 @@ COMPLETAR para front y back
 * Estilos: CSS3 y Bootstrap
 
 
-## 5.Integrantes
-<br/>
-* Nicolas Elias Calmucci - Usuario Github: Eleven1433 / Scrum master - Desarrollador
-<br/>
-* Cesar Ramiro Ruggieri - Usuario Github: subrami22 - Desarrollador
-<br/>
-* Kevin Agustin Astrada - Usuario Github: Kevin-Astrada - Desarrollador
-<br/>
-*  Jorgelina Leonora Sapp Usuario Github: jorgelinasapp - Desarrollador
-<br/>
-* Octavio Arnaudo - Usuario Github: OctavioArnaudo - Desarrollador
-<br/>
+
