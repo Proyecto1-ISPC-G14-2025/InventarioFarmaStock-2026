@@ -19,28 +19,31 @@
     <form (ngSubmit)="onLogin()" #loginForm="ngForm" novalidate>
       <div class="mb-3">
         <label class="form-label">Correo Electrónico</label>
-        <input type="email" class="form-control" name="email" [(ngModel)]="email" required
-          [class.is-invalid]="loginError">
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="email"
+          required
+          [class.is-invalid]="loginError"
+        >
       </div>
       <div class="mb-3">
         <label class="form-label">Contraseña</label>
-        <input type="password" class="form-control" name="password" [(ngModel)]="password" required
-          [class.is-invalid]="loginError">
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Rol</label>
-        <select class="form-select" name="role" [(ngModel)]="role" required
-          [class.is-invalid]="loginError">
-          <option value="">Seleccione un rol</option>
-          <option value="user">Usuario</option>
-          <option value="admin">Administrador</option>
-        </select>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="password"
+          required
+          [class.is-invalid]="loginError"
+        >
       </div>
       <div class="d-grid mb-3">
         <button type="submit" class="btn btn-primary">Ingresar</button>
       </div>
       <div class="error-message" [style.display]="loginError ? 'block' : 'none'">
-        Credenciales o rol no coincide.
+        Credenciales incorrectas. Por favor, intente de nuevo.
       </div>
     </form>
   </div>

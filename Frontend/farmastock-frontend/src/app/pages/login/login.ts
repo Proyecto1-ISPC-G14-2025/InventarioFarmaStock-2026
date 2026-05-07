@@ -11,22 +11,23 @@ import { FormsModule } from '@angular/forms';
 export class Login {
   email = '';
   password = '';
-  role = '';
   loginError = false;
   shaking = false;
 
-  usuarios: any = {
-    'admin@correo.com': { password: 'admin123', role: 'admin' },
-    'usuario@correo.com': { password: 'user123', role: 'user' }
+  private usuarios: Record<string, { password: string; role: string }> = {
+    'admin@correo.com':   { password: 'admin123', role: 'admin' },
+    'usuario@correo.com': { password: 'user123',  role: 'user'  },
   };
 
   constructor(private router: Router) {}
 
-  onLogin() {
+  onLogin(): void {
     const user = this.usuarios[this.email];
-    if (user && user.password === this.password && user.role === this.role) {
+
+    if (user && user.password === this.password) {
       this.loginError = false;
-      if (this.role === 'admin') {
+      // La redirección depende del rol guardado, no de lo que el usuario dice ser
+      if (user.role === 'admin') {
         this.router.navigate(['/admin']);
       } else {
         this.router.navigate(['/usuario']);
@@ -34,7 +35,7 @@ export class Login {
     } else {
       this.loginError = true;
       this.shaking = true;
-      setTimeout(() => this.shaking = false, 600);
+      setTimeout(() => (this.shaking = false), 600);
     }
   }
 }
