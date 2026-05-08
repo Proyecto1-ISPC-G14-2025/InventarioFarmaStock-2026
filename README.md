@@ -148,7 +148,9 @@ python manage.py migrate
 ```
 #### 7. Crear superusuario para panel de Django
 
+```bash
 pytthon manage.py create superuser
+
 
 #### 8. Iniciar el servidor backend
 
