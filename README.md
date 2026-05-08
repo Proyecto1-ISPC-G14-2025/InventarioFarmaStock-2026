@@ -144,11 +144,13 @@ CREATE DATABASE farmastock_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 #### 6. Ejecutar migraciones
 
 ```bash
-cd farmastock
 python manage.py migrate
 ```
+#### 7. Crear superusuario para panel de Django
 
-#### 7. Iniciar el servidor backend
+pytthon manage.py create superuser
+
+#### 8. Iniciar el servidor backend
 
 ```bash
 python manage.py runserver
