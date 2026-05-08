@@ -150,7 +150,7 @@ python manage.py migrate
 
 ```bash
 pytthon manage.py create superuser
-
+```
 
 #### 8. Iniciar el servidor backend
 
