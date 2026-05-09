@@ -1,24 +1,7 @@
-<<<<<<< HEAD
+
 [![Última actualización](https://img.shields.io/github/last-commit/Proyecto1-ISPC-G14-2025/InventarioFarmaStock-2026/main?label=Última%20actualización&color=green)](https://github.com/Proyecto1-ISPC-G14-2025/InventarioFarmaStock-2026/commits/main)
 =======
 # 💊 InventarioFarmaStock-2026
->>>>>>> origin/kevin-astrada
-
-Administrador web de inventarios para medicamentos, diseñado para facilitar la gestión eficiente y segura del stock en farmacias o centros de salud.
-
-<<<<<<< HEAD
-## 1. Descripción del Proyecto
-Farmastock es una plataforma web diseñada para modernizar la gestión de inventarios de medicamentos en farmacias y centros de salud. Centraliza el control de stock, vencimientos, movimientos y usuarios en una solución ágil, escalable y segura, pensada para mejorar la eficiencia operativa y ofrecer visibilidad en tiempo real del inventario.
-
-## 2.Instalación y configuración del Proyecto
-
-COMPLETAR para front y back  
-
-## 3.Requisitos funcionales y no funcionales del Proyecto
-
-## Requisitos funcionales de Farmastock
-=======
----
 
 ## Descripción del Proyecto
 
@@ -45,7 +28,7 @@ La solución implementa una arquitectura moderna con separación clara entre fro
 ---
 
 ## Requerimientos funcionales
->>>>>>> origin/kevin-astrada
+
 
 | Código | Descripción |
 |--------|-------------|
@@ -63,11 +46,6 @@ La solución implementa una arquitectura moderna con separación clara entre fro
 | RNF-2 | Control de acceso por roles: administrador, encargado de compras, cajero |
 | RNF-3 | Backup automático de la base de datos cada 24 horas, disponibilidad ≥ 98% |
 
-<<<<<<< HEAD
-## 4.Tecnologías
-=======
----
->>>>>>> origin/kevin-astrada
 
 ## Estructura del repositorio
 
@@ -97,9 +75,6 @@ InventarioFarmaStock-2026/
 └── README.md                 # Este archivo
 ```
 
-<<<<<<< HEAD
-
-=======
 ---
 
 ## ⚙️ Instrucciones de instalación
@@ -169,11 +144,15 @@ CREATE DATABASE farmastock_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 #### 6. Ejecutar migraciones
 
 ```bash
-cd farmastock
 python manage.py migrate
 ```
+#### 7. Crear superusuario para panel de Django
 
-#### 7. Iniciar el servidor backend
+```bash
+pytthon manage.py create superuser
+```
+
+#### 8. Iniciar el servidor backend
 
 ```bash
 python manage.py runserver
@@ -259,4 +238,4 @@ La aplicación estará disponible en: `http://localhost:4200`
 ## Licencia
 
 Proyecto académico — Programación II / Programación Web II / Desarrollo de Software — 2026.
->>>>>>> origin/kevin-astrada
+
