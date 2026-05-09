@@ -1,16 +1,25 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { InfoWebService } from '../../services/info-web.service';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, FormsModule],
+  standalone: true,
+  imports: [RouterLink, FormsModule, CommonModule],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
 export class Home implements AfterViewInit {
+  public info;
+
   currentSlide = 0;
   cardCount = 3;
+
+  constructor(private infoService: InfoWebService) {
+    this.info = this.infoService.homeInfo;
+  }
 
   ngAfterViewInit() {
     this.updateCarousel();

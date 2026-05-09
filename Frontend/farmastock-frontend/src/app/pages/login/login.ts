@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
-imports: [RouterLink, ReactiveFormsModule]
+import { NgIf } from '@angular/common'; // <--- Necesario para que funcione *ngIf en el HTML
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule],
+  imports: [RouterLink, ReactiveFormsModule, NgIf], // <--- Se agregó NgIf aquí
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
 export class Login {
+  // Usamos inject() para inicializar servicios de forma segura en componentes standalone
+  private fb = inject(FormBuilder);
+  private router = inject(Router);
+
   loginError = false;
   shaking = false;
 
@@ -19,12 +23,13 @@ export class Login {
     'usuario@correo.com': { password: 'user123', role: 'user' },
   };
 
+  // Ahora loginForm se crea sin errores porque fb ya fue inyectado arriba
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
   });
 
-  constructor(private router: Router, private fb: FormBuilder) { }
+  constructor() { }
 
   onLogin(): void {
     this.loginError = false;
@@ -50,6 +55,7 @@ export class Login {
     }
   }
 
+  // Getters para facilitar el acceso a los controles desde el HTML
   get email() {
     return this.loginForm.get('email');
   }
