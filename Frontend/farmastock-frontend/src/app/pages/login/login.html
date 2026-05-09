@@ -1,47 +1,36 @@
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
-  <div class="container">
-    <a class="navbar-brand" href="#">Inventario Farmacia FarmaStock</a>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" routerLink="/">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Cambio de clave</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Ayuda</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<!-- Login -->
+<!-- Login NO CAMBIAR FORMULARIO REACTIVO -NCALMUCCI-->
 <div class="login-container">
   <div class="login-card" [class.shake-animation]="shaking">
     <h3 class="text-center mb-4">Ingreso al Sistema</h3>
-    <form (ngSubmit)="onLogin()" #loginForm="ngForm" novalidate>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" novalidate>
       <div class="mb-3">
         <label class="form-label">Correo Electrónico</label>
-        <input
-          type="email"
-          class="form-control"
-          name="email"
-          [(ngModel)]="email"
-          required
-          [class.is-invalid]="loginError"
-        >
+        <input type="email" class="form-control" formControlName="email"
+          [class.is-invalid]="(email?.touched || loginError) && email?.invalid">
+        <div class="text-danger mt-1" *ngIf="email?.touched && email?.invalid">
+          <small *ngIf="email?.errors?.['required']">El correo es obligatorio.</small>
+          <small *ngIf="email?.errors?.['email']">Formato de correo inválido.</small>
+        </div>
       </div>
+
       <div class="mb-3">
         <label class="form-label">Contraseña</label>
-        <input
-          type="password"
-          class="form-control"
-          name="password"
-          [(ngModel)]="password"
-          required
-          [class.is-invalid]="loginError"
-        >
+        <input type="password" class="form-control" formControlName="password"
+          [class.is-invalid]="(password?.touched || loginError) && password?.invalid">
+        <div class="text-danger mt-1" *ngIf="password?.touched && password?.invalid">
+          <small *ngIf="password?.errors?.['required']">La contraseña es obligatoria.</small>
+          <small *ngIf="password?.errors?.['minlength']">Mínimo 6 caracteres.</small>
+          <small *ngIf="password?.errors?.['maxlength']">Máximo 20 caracteres.</small>
+        </div>
       </div>
+
       <div class="d-grid mb-3">
-        <button type="submit" class="btn btn-primary">Ingresar</button>
+        <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">
+          Ingresar
+        </button>
       </div>
+
       <div class="error-message" [style.display]="loginError ? 'block' : 'none'">
         Credenciales incorrectas. Por favor, intente de nuevo.
       </div>

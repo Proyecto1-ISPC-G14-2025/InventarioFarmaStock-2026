@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link active" href="#inicio">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href="#acerca">Acerca de</a></li>
+        <li class="nav-item"><a class="nav-link" href="#quienes">Quienes Somos</a></li>
         <li class="nav-item"><a class="nav-link" href="#testimonios">Testimonios</a></li>
         <li class="nav-item"><a class="nav-link" href="#farmastock">FarmaStock</a></li>
         <li class="nav-item"><a class="nav-link" href="#galeria">Galería</a></li>
@@ -30,26 +30,52 @@
   </div>
 </section>
 
-<!-- Acerca de -->
-<section id="acerca" class="py-5">
+
+<!-- Quienes Somos - modificado por Ncalmucci -->
+<section id="quienes" class="py-5">
   <div class="container">
-    <h2 class="mb-4 text-center">Acerca de Nosotros</h2>
-    <p class="lead text-center mb-5">Somos especialistas en gestión de inventarios de medicamentos.</p>
-    <div class="row">
-      <div class="col-md-6 mb-3">
-        <img src="assets/img/FarmaTablet.jpg" alt="FarmaTablet" class="about-image" />
+    <div class="text-center mb-5">
+      <h2 class="fw-bold">Quiénes Somos</h2>
+      <p class="lead">
+        Conocé más sobre FarmaStock, nuestro propósito y el valor que buscamos aportar a la gestión de inventarios
+        farmacéuticos.
+      </p>
+    </div>
+
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="assets/img/FarmaTablet.jpg" alt="Equipo FarmaStock" class="about-image img-fluid rounded shadow" />
       </div>
+
       <div class="col-md-6">
-        <p>Ofrecemos un sistema de inventario actualizado para que siempre encuentres lo que necesitas.</p>
+        <h3 class="mb-3 text-primary">Nuestra misión</h3>
+        <p>
+          En FarmaStock desarrollamos una solución web para optimizar el control de medicamentos, mejorar la
+          organización del stock
+          y facilitar la gestión diaria en farmacias y centros de salud.
+        </p>
+
+        <h3 class="mb-3 text-primary">Nuestra visión</h3>
+        <p>
+          Queremos ser una herramienta confiable, moderna y fácil de usar, que contribuya a la digitalización de la
+          gestión farmacéutica.
+        </p>
+
+        <h3 class="mb-3 text-primary">Nuestros valores</h3>
         <ul>
-          <li>Manejo riguroso de stock</li>
-          <li>Atención personalizada</li>
-          <li>Actualizaciones de inventario en tiempo real</li>
+          <li>Compromiso con la calidad.</li>
+          <li>Organización y eficiencia.</li>
+          <li>Innovación tecnológica.</li>
+          <li>Atención centrada en el usuario.</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
+
+
+
+
 
 <!-- Testimonios -->
 <section id="testimonios" class="py-5 bg-light">
@@ -95,7 +121,7 @@
     </div>
     <br/>
     <div class="text-center">
-      <a href="https://github.com/Proyecto1-ISPC-G14-2025/InventarioFarmaStock" class="btn btn-primary btn-lg">DESCARGAR VERSIÓN DE PRUEBA</a>
+      <a href="https://github.com/Proyecto1-ISPC-G14-2025/InventarioFarmaStock-2026" class="btn btn-primary btn-lg">DESCARGAR VERSIÓN DE PRUEBA</a>
     </div>
   </div>
 </section>
@@ -145,25 +171,165 @@
     <h2 class="mb-4 text-center">Contacto</h2>
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <form (ngSubmit)="onSubmitContacto()" #contactoForm="ngForm" novalidate>
-          <div class="mb-3">
-            <label class="form-label">Nombre *</label>
-            <input type="text" class="form-control" name="nombre" ngModel required minlength="3">
+        <!-- Contacto -->
+        <section id="contacto" class="py-5">
+        
+          <div class="container">
+        
+            <h2 class="mb-4 text-center">
+              Contacto
+            </h2>
+        
+            <div class="row justify-content-center">
+        
+              <div class="col-md-6">
+                 <!-- FORMULARIO DE CONTACTO REACTIVO - NO CAMBIAR -NCALMUCCI -->
+                <form [formGroup]="contactoForm" (ngSubmit)="onSubmitContacto()">
+        
+                  <!-- NOMBRE -->
+        
+                  <div class="mb-3">
+        
+                    <label class="form-label">
+                      Nombre *
+                    </label>
+        
+                    <input type="text" class="form-control" formControlName="nombre">
+        
+                    @if (
+                    contactoForm.get('nombre')?.invalid &&
+                    contactoForm.get('nombre')?.touched
+                    ) {
+        
+                    <div class="text-danger mt-1">
+        
+                      @if (contactoForm.get('nombre')?.errors?.['required']) {
+                      <small>El nombre es obligatorio</small>
+                      }
+        
+                      @if (contactoForm.get('nombre')?.errors?.['minlength']) {
+                      <small>Mínimo 3 caracteres</small>
+                      }
+        
+                    </div>
+        
+                    }
+        
+                  </div>
+        
+                  <!-- EMAIL -->
+        
+                  <div class="mb-3">
+        
+                    <label class="form-label">
+                      Correo Electrónico *
+                    </label>
+        
+                    <input type="email" class="form-control" formControlName="email">
+        
+                    @if (
+                    contactoForm.get('email')?.invalid &&
+                    contactoForm.get('email')?.touched
+                    ) {
+        
+                    <div class="text-danger mt-1">
+        
+                      @if (contactoForm.get('email')?.errors?.['required']) {
+                      <small>El email es obligatorio</small>
+                      }
+        
+                      @if (contactoForm.get('email')?.errors?.['email']) {
+                      <small>Email inválido</small>
+                      }
+        
+                    </div>
+        
+                    }
+        
+                  </div>
+        
+                  <!-- TELEFONO -->
+        
+                  <div class="mb-3">
+        
+                    <label class="form-label">
+                      Teléfono
+                    </label>
+        
+                    <input type="tel" class="form-control" formControlName="telefono">
+        
+                    @if (
+                    contactoForm.get('telefono')?.errors?.['pattern']
+                    ) {
+        
+                    <div class="text-danger mt-1">
+                      <small>Solo números</small>
+                    </div>
+        
+                    }
+        
+                  </div>
+        
+                  <!-- MENSAJE -->
+        
+                  <div class="mb-3">
+        
+                    <label class="form-label">
+                      Mensaje *
+                    </label>
+        
+                    <textarea class="form-control" rows="4" formControlName="mensaje"></textarea>
+        
+                    @if (
+                    contactoForm.get('mensaje')?.invalid &&
+                    contactoForm.get('mensaje')?.touched
+                    ) {
+        
+                    <div class="text-danger mt-1">
+        
+                      @if (contactoForm.get('mensaje')?.errors?.['required']) {
+                      <small>El mensaje es obligatorio</small>
+                      }
+        
+                      @if (contactoForm.get('mensaje')?.errors?.['minlength']) {
+                      <small>Mínimo 10 caracteres</small>
+                      }
+        
+                    </div>
+        
+                    }
+        
+                  </div>
+        
+                  <!-- BOTON -->
+        
+                  <button type="submit" class="btn btn-primary w-100">
+        
+                    Enviar
+        
+                  </button>
+        
+                  <!-- MENSAJE EXITO -->
+        
+                  @if (enviado) {
+        
+                  <div class="alert alert-success mt-3">
+        
+                    ¡Mensaje enviado correctamente!
+        
+                  </div>
+        
+                  }
+        
+                </form>
+        
+              </div>
+        
+            </div>
+        
           </div>
-          <div class="mb-3">
-            <label class="form-label">Correo Electrónico *</label>
-            <input type="email" class="form-control" name="email" ngModel required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Teléfono</label>
-            <input type="tel" class="form-control" name="telefono" ngModel>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Mensaje *</label>
-            <textarea class="form-control" name="mensaje" ngModel rows="4" required minlength="10"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary w-100">Enviar</button>
-        </form>
+        
+        </section>
       </div>
     </div>
   </div>
@@ -172,6 +338,6 @@
 <!-- Footer -->
 <footer>
   <div class="container">
-    <p>&copy; 2025 Grupo 14 Sistemas Informáticos. Todos los derechos reservados.</p>
+    <p>&copy; 2026 Grupo Pixel Plague. Todos los derechos reservados.</p>
   </div>
 </footer>

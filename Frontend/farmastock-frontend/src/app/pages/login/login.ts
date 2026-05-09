@@ -1,41 +1,127 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import {
+  ReactiveFormsModule,
+  FormBuilder,
+  FormGroup,
+  Validators
+} from '@angular/forms';
+
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
-  imports: [RouterLink, FormsModule],
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './login.html',
   styleUrl: './login.css'
 })
+
 export class Login {
-  email = '';
-  password = '';
+
   loginError = false;
+
   shaking = false;
 
-  private usuarios: Record<string, { password: string; role: string }> = {
-    'admin@correo.com':   { password: 'admin123', role: 'admin' },
-    'usuario@correo.com': { password: 'user123',  role: 'user'  },
+  loginForm!: FormGroup;
+
+  usuarios: Record<string, { password: string; role: string }> = {
+
+    'admin@correo.com': {
+      password: 'admin123',
+      role: 'admin'
+    },
+
+    'usuario@correo.com': {
+      password: 'user123',
+      role: 'user'
+    },
+
   };
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private fb: FormBuilder
+  ) {
+
+    this.loginForm = this.fb.group({
+
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.email
+        ]
+      ],
+
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(20)
+        ]
+      ]
+
+    });
+
+  }
 
   onLogin(): void {
-    const user = this.usuarios[this.email];
 
-    if (user && user.password === this.password) {
-      this.loginError = false;
-      // La redirección depende del rol guardado, no de lo que el usuario dice ser
-      if (user.role === 'admin') {
-        this.router.navigate(['/admin']);
-      } else {
-        this.router.navigate(['/usuario']);
-      }
-    } else {
-      this.loginError = true;
-      this.shaking = true;
-      setTimeout(() => (this.shaking = false), 600);
+    this.loginError = false;
+
+    if (this.loginForm.invalid) {
+
+      this.loginForm.markAllAsTouched();
+
+      return;
+
     }
+
+    const { email, password } = this.loginForm.value;
+
+    const user = this.usuarios[email ?? ''];
+
+    if (user && user.password === password) {
+
+      if (user.role === 'admin') {
+
+        this.router.navigate(['/admin']);
+
+      } else {
+
+        this.router.navigate(['/usuario']);
+
+      }
+
+    } else {
+
+      this.loginError = true;
+
+      this.shaking = true;
+
+      setTimeout(() => {
+
+        this.shaking = false;
+
+      }, 600);
+
+    }
+
   }
+
+  get email() {
+
+    return this.loginForm.get('email');
+
+  }
+
+  get password() {
+
+    return this.loginForm.get('password');
+
+  }
+
 }
