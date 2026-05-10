@@ -27,25 +27,15 @@ La solución implementa una arquitectura moderna con separación clara entre fro
 
 ---
 
-## Requerimientos funcionales
+## 📋 Tabla de Requisitos – Funcionales y No Funcionales
 
-
-| Código | Descripción |
-|--------|-------------|
-| RF-1 | Registrar productos en stock (nombre, código de barras, categoría, laboratorio, precio, stock inicial, fecha de vencimiento) |
-| RF-2 | Gestionar entradas y salidas de stock, actualizando el historial de movimientos |
-| RF-3 | Consultar y filtrar inventario por nombre, código, categoría o lote |
-| RF-4 | Generar alertas de stock bajo cuando un producto cae por debajo del mínimo definido |
-| RF-5 | Generar reportes de stock y movimientos por fecha, categoría o proveedor |
-
-## Requerimientos no funcionales
-
-| Código | Descripción |
-|--------|-------------|
-| RNF-1 | Tiempos de respuesta menores a 2 segundos en búsquedas y reportes |
-| RNF-2 | Control de acceso por roles: administrador, encargado de compras, cajero |
-| RNF-3 | Backup automático de la base de datos cada 24 horas, disponibilidad ≥ 98% |
-
+| Código      | Tipo      | Requisito (Descripción breve) |
+|------------|-----------|---------------------------------|
+| RF‑1       | Funcional | La aplicación debe permitir navegar entre las vistas principales (HOME, Dashboard, Quiénes Somos) usando un sistema de ruteo centralizado en Angular (SPA). |
+| RF‑2       | Funcional | Desde el Dashboard, el usuario debe poder acceder a sus funcionalidades  manteniendo la navegación SPA. |
+| RF‑3       | Funcional | El frontend debe incluir un formulario reactivo para registrar productos, que envíe datos al backend (`POST /api/productos/`) y muestre mensajes según el código de estado (201, 400). |
+| RNF‑1      | No funcional | El frontend Angular debe seguir una estructura de carpetas modular y contar con componentes reutilizables, separando claramente lógica y presentación. |
+| RNF‑2      | No funcional | Las vistas principales deben cargar de forma rápida, con diseño consistente usando Bootstrap, HTML semántico y formularios reactivos sin hardcoding en el HTML. |
 
 ## Estructura del repositorio
 
