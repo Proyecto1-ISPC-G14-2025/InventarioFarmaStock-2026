@@ -23,7 +23,7 @@ La solución implementa una arquitectura moderna con separación clara entre fro
 | Cesar Ramiro Ruggieri | [subrami22](https://github.com/subrami22) | Desarrollador |
 | Kevin Agustin Astrada | [Kevin-Astrada](https://github.com/Kevin-Astrada) | Desarrollador |
 | Jorgelina Leonora Sapp | [jorgelinasapp](https://github.com/jorgelinasapp) | Desarrolladora |
-| Octavio Arnaudo | [OctavioArnaudo](https://github.com/OctavioArnaudo) | Desarrollador |
+
 
 ---
 
@@ -156,7 +156,23 @@ Endpoint de prueba: `http://localhost:8000/api/medicamentos/`
 
 ### Frontend (Angular)
 
-#### 1. Ingresar a la carpeta del frontend
+
+## Requisitos previos
+
+- [Node.js](https://nodejs.org/) v22
+- Angular CLI instalado globalmente:
+
+```bash
+npm install -g @angular/cli
+
+
+## Instalación
+
+1. Clonar el repositorio:
+
+```bash
+git clone <URL_DEL_REPO>
+```
 
 ```bash
 cd InventarioFarmaStock-2026/Frontend/farmastock-frontend
@@ -176,6 +192,32 @@ ng serve
 
 La aplicación estará disponible en: `http://localhost:4200`
 
+
+## Build para producción
+
+```bash
+ng build
+```
+
+Los archivos compilados quedan en la carpeta `dist/`.
+
+## Estructura del proyecto
+
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── navbar/
+│   │   └── footer/
+│   └── pages/
+│       ├── home/
+│       ├── login/
+│       ├── admin/
+│       ├── admin-usuarios/
+│       └── usuario/
+├── assets/
+│   └── img/
+└── styles.css
 ---
 
 ## Uso básico del sistema
