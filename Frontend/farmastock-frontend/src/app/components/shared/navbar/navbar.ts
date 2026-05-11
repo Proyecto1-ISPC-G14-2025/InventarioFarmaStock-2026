@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Agregamos esto para el @if y @for
+import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { InfoWebService } from '../../../services/info-web.service'; 
 
@@ -10,15 +10,12 @@ import { InfoWebService } from '../../../services/info-web.service';
   templateUrl: './navbar.html',
 })
 export class Navbar {
-  // 1. Mantenemos las variables que ya arreglamos
   public nombreFarmacia: string = 'FarmaStock';
   public estaLogueado: boolean = true; 
   
-  // 2. Esta variable recibirá los datos del servicio
   public menuItems;
 
-  constructor(private infoService: InfoWebService) {
-    // 3. En lugar de escribir la lista acá, se la pedimos al servicio
+  constructor(public infoService: InfoWebService) {
     this.menuItems = this.infoService.menuItems;
   }
 }

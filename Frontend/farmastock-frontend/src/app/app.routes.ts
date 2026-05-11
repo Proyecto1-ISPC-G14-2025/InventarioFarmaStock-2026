@@ -14,6 +14,6 @@ export const routes: Routes = [
   { path: 'usuario', component: Usuario },
   { path: 'admin-usuarios', component: AdminUsuarios },
   { path: 'quienes-somos', component: QuienesSomosComponent },
-  { path: 'contacto', component: ContactoComponent }, // <--- RUTA DE CONTACTO
-  { path: '**', redirectTo: '' } // El comodín siempre al final
+  { path: 'contacto', component: ContactoComponent },
+  { path: '**', redirectTo: '' }
 ];

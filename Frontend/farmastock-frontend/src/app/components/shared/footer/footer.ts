@@ -7,15 +7,14 @@ import { InfoWebService } from '../../../services/info-web.service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './footer.html',
-  styleUrl: './footer.css'
 })
 export class Footer {
 
-  public info;
+  public info: any = {};
   
   public anioActual: number = new Date().getFullYear();
 
   constructor(private infoService: InfoWebService) {
-    this.info = this.infoService.footerInfo;
+    this.info = this.infoService.globalInfo;
   }
 }

@@ -4,8 +4,7 @@ import { Injectable } from '@angular/core';
     providedIn: 'root' 
 })
 export class InfoWebService {
-
-
+    
     public footerInfo = {
     sucursal: 'Córdoba Capital, Argentina',
     email: 'contacto@farmastock.com.ar',
@@ -36,6 +35,17 @@ public quienesSomosInfo = {
     telefono: '351-4567890',
     horario: 'Lunes a Sábados 08-22hs'
     };
+
+public globalInfo = {
+    nombreFarmacia: 'FarmaStock',
+    sucursal: 'Av. Colón 123, Córdoba Capital',
+    email: 'contacto@farmastock.com',     
+    redesSociales: [
+        { nombre: 'Instagram', url: 'https://...', icono: 'bi-instagram' },
+        { nombre: 'Facebook', url: 'https://...', icono: 'bi-facebook' }
+    ],
+    copyright: '© 2026 FarmaStock - Todos los derechos reservados.'
+};
 
 public menuItems = [
     { label: 'Inicio', path: '' },
