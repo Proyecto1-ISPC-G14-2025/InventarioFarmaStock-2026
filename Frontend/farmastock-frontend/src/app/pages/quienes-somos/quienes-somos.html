@@ -1,0 +1,19 @@
+<div class="container mt-5">
+    <h1 class="text-primary border-bottom pb-2">{{ info.titulo }}</h1>
+    <p class="lead mt-3">{{ info.mision }}</p>
+
+    <h2 class="mt-5 mb-4">Nuestro Equipo</h2>
+    <div class="row">
+    @for (persona of info.equipo; track persona.nombre) {
+        <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm border-0 bg-light">
+            <div class="card-body">
+            <h5 class="card-title fw-bold text-dark">{{ persona.nombre }}</h5>
+            <h6 class="card-subtitle mb-2 text-secondary">{{ persona.rol }}</h6>
+            <p class="card-text text-muted">{{ persona.bio }}</p>
+            </div>
+        </div>
+        </div>
+    }
+    </div>
+</div>

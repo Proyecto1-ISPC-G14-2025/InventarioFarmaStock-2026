@@ -1,0 +1,34 @@
+<div class="container mt-5">
+    <h1>{{ tituloPagina }}</h1>
+    
+    <div class="row mt-4">
+    <div class="col-md-5">
+        <div class="card p-3 bg-light">
+        <h4>Nuestra Sede</h4>
+        <p><strong>Ubicación:</strong> {{ sucursalCba.direccion }}</p>
+        <p><strong>Teléfono:</strong> {{ sucursalCba.telefono }}</p>
+        <p><strong>Email:</strong> {{ sucursalCba.email }}</p>
+        </div>
+    </div>
+
+    <div class="col-md-  7">
+        <form [formGroup]="formContacto" (ngSubmit)="enviarConsulta()">
+        <div class="mb-3">
+            <label>Nombre Completo:</label>
+            <input type="text" formControlName="nombre" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>Correo Electrónico:</label>
+            <input type="email" formControlName="email" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label>Mensaje:</label>
+            <textarea formControlName="mensaje" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="formContacto.invalid">
+            Enviar Mensaje
+        </button>
+        </form>
+    </div>
+    </div>
+</div>
