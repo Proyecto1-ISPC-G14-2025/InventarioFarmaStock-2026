@@ -1,65 +1,131 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { InfoWebService } from '../../services/info-web.service';
+imports: [ReactiveFormsModule]
+
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators
+} from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, FormsModule, CommonModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
-export class Home implements AfterViewInit {
-  public info;
 
+
+export class Home {
+
+  contactoForm: FormGroup;
+
+  enviado = false;
   currentSlide = 0;
-  cardCount = 3;
 
-  constructor(private infoService: InfoWebService) {
-    this.info = this.infoService.homeInfo;
+  constructor(private fb: FormBuilder) {
+
+    this.contactoForm = this.fb.group({
+
+      nombre: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(30)
+        ]
+      ],
+
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.email
+        ]
+      ],
+
+      telefono: [
+        '',
+        [
+          Validators.pattern('^[0-9]+$')
+        ]
+      ],
+
+      mensaje: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(300)
+        ]
+      ]
+
+    });
+
+
+
   }
 
-  ngAfterViewInit() {
-    this.updateCarousel();
-    setInterval(() => this.moveCarousel(1), 5000);
+  onSubmitContacto(): void {
+
+    if (this.contactoForm.invalid) {
+
+      this.contactoForm.markAllAsTouched();
+
+      return;
+
+    }
+
+    console.log(this.contactoForm.value);
+
+    this.enviado = true;
+
+    this.contactoForm.reset();
+
   }
 
-  moveCarousel(direction: number) {
+  moveCarousel(direction: number): void {
+
+    const totalSlides = 3;
+
     this.currentSlide += direction;
-    if (this.currentSlide < 0) this.currentSlide = this.cardCount - 1;
-    if (this.currentSlide >= this.cardCount) this.currentSlide = 0;
+
+    if (this.currentSlide < 0) {
+      this.currentSlide = totalSlides - 1;
+    }
+
+    if (this.currentSlide >= totalSlides) {
+      this.currentSlide = 0;
+    }
+
     this.updateCarousel();
+
   }
 
-  goToSlide(index: number) {
+  goToSlide(index: number): void {
+
     this.currentSlide = index;
+
     this.updateCarousel();
+
   }
 
-  updateCarousel() {
+  updateCarousel(): void {
+
     const track = document.getElementById('carouselTrack');
-    const cards = document.querySelectorAll('.carousel-card');
-    const dots = document.querySelectorAll('.carousel-dot');
-    if (!track || cards.length === 0) return;
 
-    cards.forEach((card, i) => {
-      card.classList.toggle('active', i === this.currentSlide);
-    });
-    dots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === this.currentSlide);
-    });
+    if (track) {
 
-    const cardEl = cards[0] as HTMLElement;
-    const gap = 30;
-    const cardWidth = cardEl.offsetWidth + gap;
-    const containerWidth = (track.parentElement as HTMLElement).offsetWidth;
-    const offset = containerWidth / 2 - cardWidth / 2 - this.currentSlide * cardWidth;
-    track.style.transform = `translateX(${offset}px)`;
+      const offset = this.currentSlide * -100;
+
+      track.style.transform = `translateX(${offset}%)`;
+
+    }
+
   }
 
-  onSubmitContacto() {
-    alert('Mensaje enviado correctamente');
-  }
 }
+
