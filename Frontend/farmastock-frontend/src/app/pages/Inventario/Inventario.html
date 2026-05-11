@@ -1,0 +1,32 @@
+<h1>{{ tituloPagina }}</h1>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Imagen</th>
+        <th>Nombre</th>
+        <th>Laboratorio</th>
+        <th>Precio</th>
+        <th>Stock</th>
+    </tr>
+    </thead>
+    <tbody>
+    @for (item of productos; track item.id) {
+        <tr>
+        <td>
+            <img [src]="item.imagen" [alt]="item.nombre" width="50">
+        </td>
+        <td>{{ item.nombre }}</td>
+        <td>{{ item.laboratorio }}</td>
+        <td>$ {{ item.precio }}</td>
+        
+        <td>
+            {{ item.stock }} 
+            @if (item.stock <= 5) {
+            <span style="color: red;">(¡Queda poco!)</span>
+            }
+        </td>
+        </tr>
+    }
+    </tbody>
+</table>
