@@ -24,7 +24,6 @@ La solución implementa una arquitectura moderna con separación clara entre fro
 | Kevin Agustin Astrada | [Kevin-Astrada](https://github.com/Kevin-Astrada) | Desarrollador |
 | Jorgelina Leonora Sapp | [jorgelinasapp](https://github.com/jorgelinasapp) | Desarrolladora |
 
-
 ---
 
 ## 📋 Tabla de Requisitos – Funcionales y No Funcionales
@@ -139,7 +138,7 @@ python manage.py migrate
 #### 7. Crear superusuario para panel de Django
 
 ```bash
-pytthon manage.py create superuser
+python manage.py createsuperuser
 ```
 
 #### 8. Iniciar el servidor backend
@@ -149,6 +148,8 @@ python manage.py runserver
 ```
 
 El servidor estará disponible en: `http://localhost:8000`
+
+El panel de administrador disponible en : `http://localhost:8000/admin`
 
 Endpoint de prueba: `http://localhost:8000/api/medicamentos/`
 
@@ -171,7 +172,7 @@ npm install -g @angular/cli
 1. Clonar el repositorio:
 
 ```bash
-git clone <URL_DEL_REPO>
+git clone https://github.com/TU_USUARIO/InventarioFarmaStock-2026.git
 ```
 
 ```bash
