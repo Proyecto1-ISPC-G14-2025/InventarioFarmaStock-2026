@@ -128,36 +128,44 @@
 <section id="galeria" class="py-5 bg-light">
   <div class="container">
     <h2 class="mb-4 text-center">Galería FarmaStock</h2>
-    <div class="carousel-container">
+    <div class="carousel-container" style="overflow: hidden; position: relative;">
+      
       <button class="carousel-nav prev" (click)="moveCarousel(-1)">❮</button>
       <button class="carousel-nav next" (click)="moveCarousel(1)">❯</button>
-      <div class="carousel-track" id="carouselTrack">
-        <div class="carousel-card active">
-          <img src="assets/img/LogoFarmaStock.png" alt="FarmaStock">
-          <div class="carousel-card-content">
+      
+      <div class="carousel-track" 
+           [style.transform]="'translateX(' + (currentSlide * -33.33) + '%)'"
+          style="display: flex; width: 80%; transition: transform 0.5s ease-in-out;">
+        
+        <div class="carousel-card" [class.active]="currentSlide === 0" style="width: 50%; flex-shrink: 0; padding: 1px;">
+          <img src="assets/img/LogoFarmaStock.png" alt="FarmaStock" style="width: 100%; border-radius: 5px;">
+          <div class="carousel-card-content text-center">
             <h5>FarmaStock</h5>
-            <p>Sistema completo de gestión de inventario para farmacias.</p>
+            <p>Gestión de inventario.</p>
           </div>
         </div>
-        <div class="carousel-card">
-          <img src="assets/img/SoftwareActivos.png" alt="Software Activos">
-          <div class="carousel-card-content">
-            <h5>Software de Gestión de Activos Médicos</h5>
-            <p>Sistema de gestión de equipos médicos y control de plazos.</p>
+
+        <div class="carousel-card" [class.active]="currentSlide === 1" style="width: 50%; flex-shrink: 0; padding: 1px;">
+          <img src="assets/img/SoftwareActivos.png" alt="Software Activos" style="width: 100%; border-radius: 5px;">
+          <div class="carousel-card-content text-center">
+            <h5>Activos Médicos</h5>
+            <p>Control de equipos.</p>
           </div>
         </div>
-        <div class="carousel-card">
-          <img src="assets/img/SoftwareInventario.png" alt="Software Inventario">
-          <div class="carousel-card-content">
-            <h5>Software de Gestión de Inventarios Médicos</h5>
-            <p>Sistema para manejo inteligente de stock médico.</p>
+
+        <div class="carousel-card" [class.active]="currentSlide === 2" style="width: 50%; flex-shrink: 0; padding: 1px;">
+          <img src="assets/img/SoftwareInventario.png" alt="Software Inventario" style="width: 100%; border-radius: 5px;">
+          <div class="carousel-card-content text-center">
+            <h5>Inventarios</h5>
+            <p>Stock inteligente.</p>
           </div>
         </div>
       </div>
+
       <div class="carousel-dots">
-        <span class="carousel-dot active" (click)="goToSlide(0)"></span>
-        <span class="carousel-dot" (click)="goToSlide(1)"></span>
-        <span class="carousel-dot" (click)="goToSlide(2)"></span>
+        <span class="carousel-dot" [class.active]="currentSlide === 0" (click)="goToSlide(0)"></span>
+        <span class="carousel-dot" [class.active]="currentSlide === 1" (click)="goToSlide(1)"></span>
+        <span class="carousel-dot" [class.active]="currentSlide === 2" (click)="goToSlide(2)"></span>
       </div>
     </div>
   </div>
@@ -173,14 +181,11 @@
         
           <div class="container">
         
-            <h2 class="mb-4 text-center">
-              Contacto
-            </h2>
         
             <div class="row justify-content-center">
         
               <div class="col-md-6">
-                 <!-- FORMULARIO DE CONTACTO REACTIVO - NO CAMBIAR -NCALMUCCI -->
+                <!-- FORMULARIO DE CONTACTO REACTIVO - NO CAMBIAR -NCALMUCCI -->
                 <form [formGroup]="contactoForm" (ngSubmit)="onSubmitContacto()">
         
                   <!-- NOMBRE -->
