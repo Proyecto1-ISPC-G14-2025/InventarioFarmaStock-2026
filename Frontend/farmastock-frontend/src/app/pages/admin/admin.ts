@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ProductosService, Medicamento } from '../../services/productos.service';
+import { ProductosService, Medicamento, Proveedor } from '../../services/productos.service';
 
 @Component({
   selector: 'app-admin',
@@ -12,6 +12,7 @@ import { ProductosService, Medicamento } from '../../services/productos.service'
 })
 export class Admin implements OnInit {
   medicamentos: Medicamento[] = [];
+  proveedores: Proveedor[] = [];
   formulario: FormGroup;
   mensaje: string = '';
   mensajeTipo: 'success' | 'danger' | '' = '';
@@ -19,7 +20,8 @@ export class Admin implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private productosService: ProductosService
+    private productosService: ProductosService,
+    private cdr: ChangeDetectorRef
   ) {
     this.formulario = this.fb.group({
       nombre:           ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
@@ -30,17 +32,36 @@ export class Admin implements OnInit {
       stock_minimo:     [5,  [Validators.required, Validators.min(0)]],
       precio_compra:    [0,  [Validators.required, Validators.min(0.01)]],
       fecha_expiracion: ['', [Validators.required]],
+      proveedor:        [null],
     });
   }
 
   ngOnInit(): void {
     this.cargarMedicamentos();
+    this.cargarProveedores();
+  }
+
+  get stockBajoCount(): number {
+    return this.medicamentos.filter(m => m.stock_actual <= m.stock_minimo).length;
   }
 
   cargarMedicamentos(): void {
     this.productosService.getAll().subscribe({
-      next: (data) => this.medicamentos = data,
+      next: (data) => {
+        this.medicamentos = [...data];
+        this.cdr.detectChanges();
+      },
       error: () => this.mostrarMensaje('Error al cargar medicamentos', 'danger')
+    });
+  }
+
+  cargarProveedores(): void {
+    this.productosService.getProveedores().subscribe({
+      next: (data) => {
+        this.proveedores = data;
+        this.cdr.detectChanges();
+      },
+      error: () => console.warn('No se pudieron cargar los proveedores')
     });
   }
 
@@ -50,11 +71,15 @@ export class Admin implements OnInit {
       return;
     }
     this.cargando = true;
-    this.productosService.create(this.formulario.value).subscribe({
-      next: () => {
+    const valor = this.formulario.value;
+    // Si proveedor quedó vacío, enviarlo como null
+    if (!valor.proveedor) valor.proveedor = null;
+    this.productosService.create(valor).subscribe({
+      next: (nuevoMedicamento) => {
+        this.medicamentos = [...this.medicamentos, nuevoMedicamento];
+        this.cdr.detectChanges();
         this.mostrarMensaje('Medicamento registrado correctamente', 'success');
-        this.formulario.reset({ stock_actual: 0, stock_minimo: 5, precio_compra: 0 });
-        this.cargarMedicamentos();
+        this.formulario.reset({ stock_actual: 0, stock_minimo: 5, precio_compra: 0, proveedor: null });
         this.cargando = false;
       },
       error: (err) => {
@@ -71,8 +96,9 @@ export class Admin implements OnInit {
     if (!confirm('¿Seguro que querés eliminar este medicamento?')) return;
     this.productosService.delete(id).subscribe({
       next: () => {
+        this.medicamentos = this.medicamentos.filter(m => m.id !== id);
+        this.cdr.detectChanges();
         this.mostrarMensaje('Medicamento eliminado', 'success');
-        this.cargarMedicamentos();
       },
       error: () => this.mostrarMensaje('Error al eliminar', 'danger')
     });

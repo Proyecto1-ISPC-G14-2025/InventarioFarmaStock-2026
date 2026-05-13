@@ -29,9 +29,7 @@
       <div class="card text-white bg-warning mb-3">
         <div class="card-header">Stock Bajo</div>
         <div class="card-body">
-          <h5 class="card-title">
-            {{ medicamentos.length }}
-          </h5>
+          <h5 class="card-title">{{ stockBajoCount }}</h5>
           <p class="card-text">Productos por debajo del mínimo</p>
         </div>
       </div>
@@ -57,6 +55,7 @@
         <th>Lote</th>
         <th>Stock</th>
         <th>Fecha Expiración</th>
+        <th>Proveedor</th>
         <th>Acciones</th>
       </tr>
     </thead>
@@ -70,13 +69,14 @@
           <td>{{ med.lote }}</td>
           <td>{{ med.stock_actual }}</td>
           <td>{{ med.fecha_expiracion }}</td>
+          <td>{{ med.proveedor_nombre ?? 'Sin proveedor' }}</td>
           <td>
             <button class="btn btn-sm btn-danger" (click)="eliminar(med.id!)">Eliminar</button>
           </td>
         </tr>
       } @empty {
         <tr>
-          <td colspan="8" class="text-center">No hay medicamentos registrados</td>
+          <td colspan="9" class="text-center">No hay medicamentos registrados</td>
         </tr>
       }
     </tbody>
@@ -167,6 +167,18 @@
         @if (invalido('fecha_expiracion')) {
           <div class="invalid-feedback">La fecha es obligatoria.</div>
         }
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Proveedor <span class="text-muted">(opcional)</span></label>
+        <select class="form-select" formControlName="proveedor">
+          <option [ngValue]="null">Sin proveedor</option>
+          @for (prov of proveedores; track prov.id) {
+            <option [ngValue]="prov.id">{{ prov.nombre }}</option>
+          }
+        </select>
       </div>
     </div>
 
