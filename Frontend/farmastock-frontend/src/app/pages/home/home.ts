@@ -1,131 +1,91 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-imports: [ReactiveFormsModule]
-
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators
-} from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
-
-
-export class Home {
-
+export class Home implements OnInit, OnDestroy {
   contactoForm: FormGroup;
-
   enviado = false;
   currentSlide = 0;
+  totalSlides = 3;
+  autoPlayInterval: any;
 
-  constructor(private fb: FormBuilder) {
-
+  constructor(
+    private fb: FormBuilder,
+    private cdr: ChangeDetectorRef
+  ) {
     this.contactoForm = this.fb.group({
-
-      nombre: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(30)
-        ]
-      ],
-
-      email: [
-        '',
-        [
-          Validators.required,
-          Validators.email
-        ]
-      ],
-
-      telefono: [
-        '',
-        [
-          Validators.pattern('^[0-9]+$')
-        ]
-      ],
-
-      mensaje: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(10),
-          Validators.maxLength(300)
-        ]
-      ]
-
+      nombre: ['', [Validators.required, Validators.minLength(3)]],
+      email: ['', [Validators.required, Validators.email]],
+      telefono: ['', [Validators.pattern('^[0-9]+$')]],
+      mensaje: ['', [Validators.required, Validators.minLength(10)]]
     });
-
-
-
   }
 
-  onSubmitContacto(): void {
+  ngOnInit(): void {
+    this.startAutoPlay();
+  }
 
-    if (this.contactoForm.invalid) {
+  ngOnDestroy(): void {
+    this.stopAutoPlay();
+  }
 
-      this.contactoForm.markAllAsTouched();
+  // --- Lógica de Autoslide ---
+  startAutoPlay(): void {
+    this.stopAutoPlay();
+    this.autoPlayInterval = setInterval(() => {
+      this.nextSlide();
+    }, 4000); 
+  }
 
-      return;
-
+  stopAutoPlay(): void {
+    if (this.autoPlayInterval) {
+      clearInterval(this.autoPlayInterval);
     }
+  }
 
-    console.log(this.contactoForm.value);
-
-    this.enviado = true;
-
-    this.contactoForm.reset();
-
+  nextSlide(): void {
+    this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+    this.cdr.detectChanges(); // Forzamos a Angular a ver el cambio de slide
   }
 
   moveCarousel(direction: number): void {
-
-    const totalSlides = 3;
-
+    this.stopAutoPlay();
     this.currentSlide += direction;
-
+    
     if (this.currentSlide < 0) {
-      this.currentSlide = totalSlides - 1;
-    }
-
-    if (this.currentSlide >= totalSlides) {
+      this.currentSlide = this.totalSlides - 1;
+    } else if (this.currentSlide >= this.totalSlides) {
       this.currentSlide = 0;
     }
-
-    this.updateCarousel();
-
+    
+    this.cdr.detectChanges(); 
+    this.startAutoPlay();
   }
 
   goToSlide(index: number): void {
-
     this.currentSlide = index;
-
-    this.updateCarousel();
-
+    this.cdr.detectChanges();
+    this.startAutoPlay();
   }
 
-  updateCarousel(): void {
-
-    const track = document.getElementById('carouselTrack');
-
-    if (track) {
-
-      const offset = this.currentSlide * -100;
-
-      track.style.transform = `translateX(${offset}%)`;
-
+  onSubmitContacto(): void {
+    if (this.contactoForm.valid) {
+      console.log('Formulario enviado');
+      this.enviado = true;
+      this.contactoForm.reset();
+      setTimeout(() => {
+        this.enviado = false;
+        this.cdr.detectChanges();
+      }, 2000);
     }
-
   }
-
 }
 
