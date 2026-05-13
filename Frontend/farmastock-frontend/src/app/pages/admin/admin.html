@@ -12,28 +12,36 @@
   </div>
 </nav>
 
-<!-- Dashboard -->
 <div class="container mt-4">
+
+  <!-- Tarjetas resumen -->
   <div class="row mb-4">
     <div class="col-md-4">
       <div class="card text-white bg-success mb-3">
         <div class="card-header">Medicamentos en Stock</div>
         <div class="card-body">
-          <h5 class="card-title">150</h5>
-          <p class="card-text">Total de medicamentos disponibles</p>
+          <h5 class="card-title">{{ medicamentos.length }}</h5>
+          <p class="card-text">Total de medicamentos registrados</p>
         </div>
       </div>
     </div>
     <div class="col-md-4">
       <div class="card text-white bg-warning mb-3">
-        <div class="card-header">Medicamentos Próximos a Expirar</div>
+        <div class="card-header">Stock Bajo</div>
         <div class="card-body">
-          <h5 class="card-title">5</h5>
-          <p class="card-text">Artículos con fecha próxima de vencimiento</p>
+          <h5 class="card-title">{{ stockBajoCount }}</h5>
+          <p class="card-text">Productos por debajo del mínimo</p>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Mensaje feedback -->
+  @if (mensaje) {
+    <div class="alert alert-{{ mensajeTipo }} alert-dismissible" role="alert">
+      {{ mensaje }}
+    </div>
+  }
 
   <!-- Tabla -->
   <h3>Medicamentos</h3>
@@ -42,57 +50,141 @@
       <tr>
         <th>ID</th>
         <th>Nombre</th>
+        <th>Código de Barras</th>
+        <th>Categoría</th>
         <th>Lote</th>
-        <th>Cantidad</th>
-        <th>Fecha de Expiración</th>
+        <th>Stock</th>
+        <th>Fecha Expiración</th>
+        <th>Proveedor</th>
         <th>Acciones</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>Paracetamol</td>
-        <td>A1234</td>
-        <td>50</td>
-        <td>2025-12-31</td>
-        <td>
-          <button class="btn btn-sm btn-primary">Editar</button>
-          <button class="btn btn-sm btn-danger">Eliminar</button>
-        </td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Ibuprofeno</td>
-        <td>B5678</td>
-        <td>30</td>
-        <td>2024-10-20</td>
-        <td>
-          <button class="btn btn-sm btn-primary">Editar</button>
-          <button class="btn btn-sm btn-danger">Eliminar</button>
-        </td>
-      </tr>
+      @for (med of medicamentos; track med.id) {
+        <tr>
+          <td>{{ med.id }}</td>
+          <td>{{ med.nombre }}</td>
+          <td>{{ med.codigo_barras }}</td>
+          <td>{{ med.categoria }}</td>
+          <td>{{ med.lote }}</td>
+          <td>{{ med.stock_actual }}</td>
+          <td>{{ med.fecha_expiracion }}</td>
+          <td>{{ med.proveedor_nombre ?? 'Sin proveedor' }}</td>
+          <td>
+            <button class="btn btn-sm btn-danger" (click)="eliminar(med.id!)">Eliminar</button>
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="9" class="text-center">No hay medicamentos registrados</td>
+        </tr>
+      }
     </tbody>
   </table>
 
-  <!-- Formulario -->
-  <h3>Agregar Nuevo Medicamento</h3>
-  <form>
-    <div class="mb-3">
-      <label class="form-label">Nombre</label>
-      <input type="text" class="form-control" placeholder="Nombre del medicamento" />
+  <!-- Formulario reactivo -->
+  <h3 class="mt-4">Agregar Nuevo Medicamento</h3>
+  <form [formGroup]="formulario" (ngSubmit)="onSubmit()" novalidate>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Nombre *</label>
+        <input type="text" class="form-control" formControlName="nombre"
+          [class.is-invalid]="invalido('nombre')">
+        @if (invalido('nombre')) {
+          <div class="invalid-feedback">
+            @if (campo('nombre')?.errors?.['required']) { El nombre es obligatorio. }
+            @if (campo('nombre')?.errors?.['minlength']) { Mínimo 3 caracteres. }
+            @if (campo('nombre')?.errors?.['maxlength']) { Máximo 200 caracteres. }
+          </div>
+        }
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Código de Barras *</label>
+        <input type="text" class="form-control" formControlName="codigo_barras"
+          [class.is-invalid]="invalido('codigo_barras')">
+        @if (invalido('codigo_barras')) {
+          <div class="invalid-feedback">
+            @if (campo('codigo_barras')?.errors?.['required']) { El código es obligatorio. }
+            @if (campo('codigo_barras')?.errors?.['pattern']) { Debe tener entre 7 y 13 dígitos. }
+          </div>
+        }
+      </div>
     </div>
-    <div class="mb-3">
-      <label class="form-label">Número de Lote</label>
-      <input type="text" class="form-control" placeholder="Número de lote" />
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Categoría *</label>
+        <input type="text" class="form-control" formControlName="categoria"
+          [class.is-invalid]="invalido('categoria')">
+        @if (invalido('categoria')) {
+          <div class="invalid-feedback">La categoría es obligatoria (mínimo 3 caracteres).</div>
+        }
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Lote *</label>
+        <input type="text" class="form-control" formControlName="lote"
+          [class.is-invalid]="invalido('lote')">
+        @if (invalido('lote')) {
+          <div class="invalid-feedback">El lote es obligatorio.</div>
+        }
+      </div>
     </div>
-    <div class="mb-3">
-      <label class="form-label">Cantidad</label>
-      <input type="number" class="form-control" placeholder="Cantidad en stock" />
+
+    <div class="row">
+      <div class="col-md-3 mb-3">
+        <label class="form-label">Stock Actual *</label>
+        <input type="number" class="form-control" formControlName="stock_actual"
+          [class.is-invalid]="invalido('stock_actual')">
+        @if (invalido('stock_actual')) {
+          <div class="invalid-feedback">No puede ser negativo.</div>
+        }
+      </div>
+
+      <div class="col-md-3 mb-3">
+        <label class="form-label">Stock Mínimo *</label>
+        <input type="number" class="form-control" formControlName="stock_minimo"
+          [class.is-invalid]="invalido('stock_minimo')">
+        @if (invalido('stock_minimo')) {
+          <div class="invalid-feedback">No puede ser negativo.</div>
+        }
+      </div>
+
+      <div class="col-md-3 mb-3">
+        <label class="form-label">Precio de Compra *</label>
+        <input type="number" step="0.01" class="form-control" formControlName="precio_compra"
+          [class.is-invalid]="invalido('precio_compra')">
+        @if (invalido('precio_compra')) {
+          <div class="invalid-feedback">El precio debe ser mayor a 0.</div>
+        }
+      </div>
+
+      <div class="col-md-3 mb-3">
+        <label class="form-label">Fecha de Expiración *</label>
+        <input type="date" class="form-control" formControlName="fecha_expiracion"
+          [class.is-invalid]="invalido('fecha_expiracion')">
+        @if (invalido('fecha_expiracion')) {
+          <div class="invalid-feedback">La fecha es obligatoria.</div>
+        }
+      </div>
     </div>
-    <div class="mb-3">
-      <label class="form-label">Fecha de Expiración</label>
-      <input type="date" class="form-control" />
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Proveedor</label>
+        <select class="form-select" formControlName="proveedor">
+          <option [ngValue]="null">Sin proveedor</option>
+          @for (prov of proveedores; track prov.id) {
+            <option [ngValue]="prov.id">{{ prov.nombre }}</option>
+          }
+        </select>
+      </div>
     </div>
-    <button type="submit" class="btn btn-success">Agregar</button>
+
+    <button type="submit" class="btn btn-success" [disabled]="cargando">
+      {{ cargando ? 'Guardando...' : 'Agregar Medicamento' }}
+    </button>
+
   </form>
 </div>
