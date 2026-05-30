@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './usuario.css'
 })
 export class Usuario {
-  // Estos son los datos que se verán en las tarjetas y la tabla
   totalStock: number = 150;
   proximosAVencer: number = 5;
 

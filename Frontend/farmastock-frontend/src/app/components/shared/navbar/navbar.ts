@@ -11,18 +11,23 @@ import { CommonModule } from '@angular/common';
 })
 export class Navbar {
   mostrarNavbar: boolean = true;
+  rolUsuario: string | null = '';
 
   constructor(private router: Router) {
-    // Escuchamos los cambios de ruta del sistema
     this.router.events.subscribe(() => {
       const rutaActual = this.router.url;
       
-      // Si el usuario está en el login o en el home vacío, ocultamos el Navbar
       if (rutaActual === '/login' || rutaActual === '/' || rutaActual === '') {
         this.mostrarNavbar = false;
       } else {
         this.mostrarNavbar = true;
+        this.rolUsuario = localStorage.getItem('userRole');
       }
     });
+  }
+
+  logout(): void {
+    localStorage.removeItem('userRole'); 
+    this.router.navigate(['/login']);    
   }
 }

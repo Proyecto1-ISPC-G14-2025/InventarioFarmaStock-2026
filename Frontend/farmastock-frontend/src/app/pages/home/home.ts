@@ -29,8 +29,26 @@ export class Home implements OnInit, OnDestroy {
     });
   }
 
+porcentajeDesplazamiento = 33.33;
+
   ngOnInit(): void {
     this.startAutoPlay();
+    this.evaluarPantalla();
+    
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', () => this.evaluarPantalla());
+    }
+  }
+
+  evaluarPantalla(): void {
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth < 768) {
+        this.porcentajeDesplazamiento = 100;
+      } else {
+        this.porcentajeDesplazamiento = 33.33;
+      }
+      this.cdr.detectChanges();
+    }
   }
 
   ngOnDestroy(): void {
@@ -53,7 +71,7 @@ export class Home implements OnInit, OnDestroy {
 
   nextSlide(): void {
     this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
-    this.cdr.detectChanges(); // Forzamos a Angular a ver el cambio de slide
+    this.cdr.detectChanges();
   }
 
   moveCarousel(direction: number): void {

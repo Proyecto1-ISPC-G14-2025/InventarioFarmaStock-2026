@@ -136,10 +136,10 @@
       <button class="carousel-nav next" (click)="moveCarousel(1)">❯</button>
       
       <div class="carousel-track" 
-           [style.transform]="'translateX(' + (currentSlide * -33.33) + '%)'"
-          style="display: flex; width: 80%; transition: transform 0.5s ease-in-out;">
+           [style.transform]="'translateX(' + (currentSlide * -porcentajeDesplazamiento) + '%)'"
+          style="display: flex; transition: transform 0.5s ease-in-out; width: 100%;">
         
-        <div class="carousel-card" [class.active]="currentSlide === 0" style="width: 50%; flex-shrink: 0; padding: 1px;">
+        <div class="carousel-card" [class.active]="currentSlide === 0" [style.width.%]="porcentajeDesplazamiento" style="flex-shrink: 0; padding: 1px;">
           <img src="assets/img/LogoFarmaStock.png" alt="FarmaStock" style="width: 100%; border-radius: 5px;">
           <div class="carousel-card-content text-center">
             <h5>FarmaStock</h5>
@@ -147,7 +147,7 @@
           </div>
         </div>
 
-        <div class="carousel-card" [class.active]="currentSlide === 1" style="width: 50%; flex-shrink: 0; padding: 1px;">
+        <div class="carousel-card" [class.active]="currentSlide === 1" [style.width.%]="porcentajeDesplazamiento" style="flex-shrink: 0; padding: 1px;">
           <img src="assets/img/SoftwareActivos.png" alt="Software Activos" style="width: 100%; border-radius: 5px;">
           <div class="carousel-card-content text-center">
             <h5>Activos Médicos</h5>
@@ -155,7 +155,7 @@
           </div>
         </div>
 
-        <div class="carousel-card" [class.active]="currentSlide === 2" style="width: 50%; flex-shrink: 0; padding: 1px;">
+        <div class="carousel-card" [class.active]="currentSlide === 2" [style.width.%]="porcentajeDesplazamiento" style="flex-shrink: 0; padding: 1px;">
           <img src="assets/img/SoftwareInventario.png" alt="Software Inventario" style="width: 100%; border-radius: 5px;">
           <div class="carousel-card-content text-center">
             <h5>Inventarios</h5>
