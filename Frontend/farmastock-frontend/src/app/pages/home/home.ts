@@ -1,12 +1,11 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
@@ -16,6 +15,7 @@ export class Home implements OnInit, OnDestroy {
   currentSlide = 0;
   totalSlides = 3;
   autoPlayInterval: any;
+  porcentajeDesplazamiento = 33.33;
 
   constructor(
     private fb: FormBuilder,
@@ -28,8 +28,6 @@ export class Home implements OnInit, OnDestroy {
       mensaje: ['', [Validators.required, Validators.minLength(10)]]
     });
   }
-
-porcentajeDesplazamiento = 33.33;
 
   ngOnInit(): void {
     this.startAutoPlay();
@@ -55,7 +53,7 @@ porcentajeDesplazamiento = 33.33;
     this.stopAutoPlay();
   }
 
-  // --- Lógica de Autoslide ---
+  // --- Autoslide ---
   startAutoPlay(): void {
     this.stopAutoPlay();
     this.autoPlayInterval = setInterval(() => {
@@ -84,7 +82,7 @@ porcentajeDesplazamiento = 33.33;
       this.currentSlide = 0;
     }
     
-    this.cdr.detectChanges(); 
+    this.cdr.detectChanges();
     this.startAutoPlay();
   }
 
@@ -106,4 +104,3 @@ porcentajeDesplazamiento = 33.33;
     }
   }
 }
-

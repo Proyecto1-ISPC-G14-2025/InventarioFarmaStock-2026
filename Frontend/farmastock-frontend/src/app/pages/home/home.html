@@ -130,33 +130,32 @@
 <section id="galeria" class="py-5 bg-light">
   <div class="container">
     <h2 class="mb-4 text-center">Galería FarmaStock</h2>
-    <div class="carousel-container" style="overflow: hidden; position: relative;">
+    <div class="carousel-container">
       
       <button class="carousel-nav prev" (click)="moveCarousel(-1)">❮</button>
       <button class="carousel-nav next" (click)="moveCarousel(1)">❯</button>
       
       <div class="carousel-track" 
-           [style.transform]="'translateX(' + (currentSlide * -porcentajeDesplazamiento) + '%)'"
-          style="display: flex; transition: transform 0.5s ease-in-out; width: 100%;">
+           [style.transform]="'translateX(' + (currentSlide * -porcentajeDesplazamiento) + '%)'">
         
-        <div class="carousel-card" [class.active]="currentSlide === 0" [style.width.%]="porcentajeDesplazamiento" style="flex-shrink: 0; padding: 1px;">
-          <img src="assets/img/LogoFarmaStock.png" alt="FarmaStock" style="width: 100%; border-radius: 5px;">
+        <div class="carousel-card" [class.active]="currentSlide === 0" [style.width.%]="porcentajeDesplazamiento">
+          <img src="assets/img/LogoFarmaStock.png" alt="FarmaStock" class="carousel-img">
           <div class="carousel-card-content text-center">
             <h5>FarmaStock</h5>
             <p>Gestión de inventario.</p>
           </div>
         </div>
 
-        <div class="carousel-card" [class.active]="currentSlide === 1" [style.width.%]="porcentajeDesplazamiento" style="flex-shrink: 0; padding: 1px;">
-          <img src="assets/img/SoftwareActivos.png" alt="Software Activos" style="width: 100%; border-radius: 5px;">
+        <div class="carousel-card" [class.active]="currentSlide === 1" [style.width.%]="porcentajeDesplazamiento">
+          <img src="assets/img/SoftwareActivos.png" alt="Software Activos" class="carousel-img">
           <div class="carousel-card-content text-center">
             <h5>Activos Médicos</h5>
             <p>Control de equipos.</p>
           </div>
         </div>
 
-        <div class="carousel-card" [class.active]="currentSlide === 2" [style.width.%]="porcentajeDesplazamiento" style="flex-shrink: 0; padding: 1px;">
-          <img src="assets/img/SoftwareInventario.png" alt="Software Inventario" style="width: 100%; border-radius: 5px;">
+        <div class="carousel-card" [class.active]="currentSlide === 2" [style.width.%]="porcentajeDesplazamiento">
+          <img src="assets/img/SoftwareInventario.png" alt="Software Inventario" class="carousel-img">
           <div class="carousel-card-content text-center">
             <h5>Inventarios</h5>
             <p>Stock inteligente.</p>

@@ -10,22 +10,29 @@
     border-radius: 20px; 
 }
 
+.carousel-container {
+    overflow: hidden; 
+    position: relative;
+}
+
 .carousel-track {
     display: flex;
     align-items: center;
     transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     margin-left: 33.33%; 
+    width: 100%;
 }
 
 .carousel-card {
-    flex: 0 0 33.33%; 
+    flex-shrink: 0;
     padding: 0 15px;
+    padding-top: 25px !important; 
     transition: all 0.6s ease;
     opacity: 0.4;
     transform: scale(0.8);
     filter: blur(1px);
     overflow: hidden; 
-    border-radius: 20px;
+    border-radius: 20px; 
 }
 
 .carousel-card.active {
@@ -33,6 +40,11 @@
     transform: scale(1.2);
     filter: blur(0);
     z-index: 5;
+}
+
+.carousel-img {
+    width: 100%; 
+    border-radius: 5px;
 }
 
 .carousel-card img {
@@ -48,7 +60,6 @@
     text-align: center;
     margin-top: 20px;
 }
-
 
 @media (max-width: 767px) {
     .carousel-track {
