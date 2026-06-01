@@ -1,5 +1,5 @@
 
-[![Última actualización](https://img.shields.io/github/last-commit/Proyecto1-ISPC-G14-2025/InventarioFarmaStock-2026/main?label=Última%20actualización&color=green)](https://github.com/Proyecto1-ISPC-G14-2025/InventarioFarmaStock-2026/commits/main)
+[![Última actualización](https://img.shields.io/github/last-commit/Proyecto1-ISPC-G14-2025/InventarioFarmaStock-2026/develop?label=Última%20actualización&color=green)](https://github.com/Proyecto1-ISPC-G14-2025/InventarioFarmaStock-2026/commits/develop)
 =======
 # 💊 InventarioFarmaStock-2026
 
