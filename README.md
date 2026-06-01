@@ -1,5 +1,4 @@
 
-=======
 # 💊 InventarioFarmaStock-2026
 
 ## Descripción del Proyecto
