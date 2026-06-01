@@ -20,90 +20,168 @@
 </nav>
 
 <!-- Hero -->
-<section id="inicio" class="py-5 text-center bg-light hero-section">
-  <div class="container hero-content">
-    <h1 class="display-4 fw-bold mb-3 text-white hero-text-shadow-strong">Bienvenido a FarmaStock</h1>
-    <p class="lead mb-4 text-white hero-text-shadow-soft">Tu confianza es nuestra prioridad. Gestión efectiva de medicamentos disponibles para ti.</p>
-  </div>
+<section id="inicio" class="hero-section">
+
+  <div class="hero-overlay"></div>
+
   <div class="hero-bg">
-    <img src="assets/img/FarmaBanner.jpeg" alt="Banner FarmaStock" />
+    <img
+      src="assets/img/FarmaBanner.jpeg"
+      alt="Banner FarmaStock">
   </div>
+
+  <div class="container hero-content">
+
+    <h1 class="hero-title">
+      Bienvenido a FarmaStock
+    </h1>
+
+    <p class="hero-subtitle">
+      Tu plataforma inteligente para la gestión de inventarios farmacéuticos.
+    </p>
+
+    <div class="mt-4">
+      <a href="#contacto" class="btn btn-primary btn-lg me-2">
+        Contáctanos
+      </a>
+
+      <a href="#quienes" class="btn btn-outline-light btn-lg">
+        Conocer Más
+      </a>
+    </div>
+
+  </div>
+
 </section>
 
 
-<!-- Quienes Somos - modificado por Ncalmucci -->
-<section id="quienes" class="py-5">
+<!-- Quienes Somos - modificado por Ncalmuccin -->
+<section id="quienes" class="quienes-section py-5">
+
   <div class="container">
+
     <div class="text-center mb-5">
-      <h2 class="fw-bold">Quiénes Somos</h2>
-      <p class="lead">
-        Conocé más sobre FarmaStock, nuestro propósito y el valor que buscamos aportar a la gestión de inventarios
-        farmacéuticos.
+      <h2 class="fw-bold quienes-titulo">Quiénes Somos</h2>
+      <p class="lead text-muted">
+        Conocé más sobre FarmaStock, nuestra misión y nuestro compromiso con la gestión farmacéutica.
       </p>
     </div>
 
-    <div class="row align-items-center">
-      <div class="col-md-6 mb-4 mb-md-0">
-        <img src="assets/img/FarmaTablet.jpg" alt="Equipo FarmaStock" class="about-image img-fluid rounded shadow" />
+    <div class="row align-items-center g-5">
+
+      <!-- Imagen -->
+      <div class="col-lg-6">
+        <div class="imagen-contenedor">
+          <img
+            src="assets/img/FarmaTablet.jpg"
+            alt="Equipo FarmaStock"
+            class="img-fluid rounded-4 shadow-lg quienes-img">
+        </div>
       </div>
 
-      <div class="col-md-6">
-        <h3 class="mb-3 text-primary">Nuestra misión</h3>
-        <p>
-          En FarmaStock desarrollamos una solución web para optimizar el control de medicamentos, mejorar la
-          organización del stock
-          y facilitar la gestión diaria en farmacias y centros de salud.
-        </p>
+      <!-- Información -->
+      <div class="col-lg-6">
 
-        <h3 class="mb-3 text-primary">Nuestra visión</h3>
-        <p>
-          Queremos ser una herramienta confiable, moderna y fácil de usar, que contribuya a la digitalización de la
-          gestión farmacéutica.
-        </p>
+        <div class="info-card mb-4">
+          <h3>🎯 Nuestra misión</h3>
+          <p>
+            Desarrollar una solución web que optimice el control de medicamentos,
+            mejore la organización del stock y facilite la gestión diaria de farmacias.
+          </p>
+        </div>
 
-        <h3 class="mb-3 text-primary">Nuestros valores</h3>
-        <ul>
-          <li>Compromiso con la calidad.</li>
-          <li>Organización y eficiencia.</li>
-          <li>Innovación tecnológica.</li>
-          <li>Atención centrada en el usuario.</li>
-        </ul>
+        <div class="info-card mb-4">
+          <h3>🚀 Nuestra visión</h3>
+          <p>
+            Ser una herramienta moderna, confiable y accesible para impulsar la
+            transformación digital de la gestión farmacéutica.
+          </p>
+        </div>
+
+        <div class="info-card">
+          <h3>💙 Nuestros valores</h3>
+
+          <div class="row g-3 mt-2">
+
+            <div class="col-6">
+              <div class="valor-card">
+                Calidad
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="valor-card">
+                Eficiencia
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="valor-card">
+                Innovación
+              </div>
+            </div>
+
+            <div class="col-6">
+              <div class="valor-card">
+                Usuario
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
+
     </div>
+
   </div>
+
 </section>
-
-
-
 
 
 <!-- Testimonios -->
 <section id="testimonios" class="py-5 bg-light">
   <div class="container">
-    <h2 class="mb-4 text-center">Testimonios</h2>
+
+    <h2 class="mb-5 text-center titulo-testimonios">
+      Testimonios
+    </h2>
+
     <div class="row g-4">
+
       <div class="col-md-4">
-        <div class="card p-3 shadow-sm">
-          <p>"La facilidad para registrar entradas y salidas de medicamentos nos ahorra tiempo y reduce errores manuales."</p>
+        <div class="card p-4 shadow-sm testimonial-card">
+          <p>
+            "La facilidad para registrar entradas y salidas de medicamentos reduce errores manuales."
+          </p>
           <h6 class="fw-bold mb-0">Carlos López</h6>
           <small>Administrador de Farmacia</small>
         </div>
       </div>
+
       <div class="col-md-4">
-        <div class="card p-3 shadow-sm">
-          <p>"Con este sistema logramos identificar rápidamente los medicamentos próximos a vencer."</p>
+        <div class="card p-4 shadow-sm testimonial-card">
+          <p>
+            "Con este sistema logramos identificar rápidamente los medicamentos próximos a vencer."
+          </p>
           <h6 class="fw-bold mb-0">Carlos Pérez</h6>
           <small>Gerente de Sucursal</small>
         </div>
       </div>
+
       <div class="col-md-4">
-        <div class="card p-3 shadow-sm">
-          <p>"Desde que implementamos el sistema, la gestión de medicamentos es mucho más eficiente."</p>
+        <div class="card p-4 shadow-sm testimonial-card">
+          <p>
+            "Desde que implementamos el sistema, la gestión de medicamentos es mucho más eficiente."
+          </p>
           <h6 class="fw-bold mb-0">Laura Gómez</h6>
           <small>Farmacéutica</small>
         </div>
       </div>
+
     </div>
+
   </div>
 </section>
 
@@ -172,169 +250,185 @@
   </div>
 </section>
 
-<!-- Contacto -->
+<!-- Contacto - modificado Ncalmuccin -->
 <section id="contacto" class="py-5">
-  <div class="container">
-    <h2 class="mb-4 text-center">Contacto</h2>
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <!-- Contacto -->
-        <section id="contacto" class="py-5">
-        
-          <div class="container">
-        
-        
-            <div class="row justify-content-center">
-        
-              <div class="col-md-6">
-                <!-- FORMULARIO DE CONTACTO REACTIVO - NO CAMBIAR -NCALMUCCI -->
-                <form [formGroup]="contactoForm" (ngSubmit)="onSubmitContacto()">
-        
-                  <!-- NOMBRE -->
-        
-                  <div class="mb-3">
-        
-                    <label class="form-label">
-                      Nombre *
-                    </label>
-        
-                    <input type="text" class="form-control" formControlName="nombre">
-        
-                    @if (
-                    contactoForm.get('nombre')?.invalid &&
-                    contactoForm.get('nombre')?.touched
-                    ) {
-        
-                    <div class="text-danger mt-1">
-        
-                      @if (contactoForm.get('nombre')?.errors?.['required']) {
-                      <small>El nombre es obligatorio</small>
-                      }
-        
-                      @if (contactoForm.get('nombre')?.errors?.['minlength']) {
-                      <small>Mínimo 3 caracteres</small>
-                      }
-        
-                    </div>
-        
-                    }
-        
-                  </div>
-        
-                  <!-- EMAIL -->
-        
-                  <div class="mb-3">
-        
-                    <label class="form-label">
-                      Correo Electrónico *
-                    </label>
-        
-                    <input type="email" class="form-control" formControlName="email">
-        
-                    @if (
-                    contactoForm.get('email')?.invalid &&
-                    contactoForm.get('email')?.touched
-                    ) {
-        
-                    <div class="text-danger mt-1">
-        
-                      @if (contactoForm.get('email')?.errors?.['required']) {
-                      <small>El email es obligatorio</small>
-                      }
-        
-                      @if (contactoForm.get('email')?.errors?.['email']) {
-                      <small>Email inválido</small>
-                      }
-        
-                    </div>
-        
-                    }
-        
-                  </div>
-        
-                  <!-- TELEFONO -->
-        
-                  <div class="mb-3">
-        
-                    <label class="form-label">
-                      Teléfono
-                    </label>
-        
-                    <input type="tel" class="form-control" formControlName="telefono">
-        
-                    @if (
-                    contactoForm.get('telefono')?.errors?.['pattern']
-                    ) {
-        
-                    <div class="text-danger mt-1">
-                      <small>Solo números</small>
-                    </div>
-        
-                    }
-        
-                  </div>
-        
-                  <!-- MENSAJE -->
-        
-                  <div class="mb-3">
-        
-                    <label class="form-label">
-                      Mensaje *
-                    </label>
-        
-                    <textarea class="form-control" rows="4" formControlName="mensaje"></textarea>
-        
-                    @if (
-                    contactoForm.get('mensaje')?.invalid &&
-                    contactoForm.get('mensaje')?.touched
-                    ) {
-        
-                    <div class="text-danger mt-1">
-        
-                      @if (contactoForm.get('mensaje')?.errors?.['required']) {
-                      <small>El mensaje es obligatorio</small>
-                      }
-        
-                      @if (contactoForm.get('mensaje')?.errors?.['minlength']) {
-                      <small>Mínimo 10 caracteres</small>
-                      }
-        
-                    </div>
-        
-                    }
-        
-                  </div>
-        
-                  <!-- BOTON -->
-        
-                  <button type="submit" class="btn btn-primary w-100">
-        
-                    Enviar
-        
-                  </button>
-        
-                  <!-- MENSAJE EXITO -->
-        
-                  @if (enviado) {
-        
-                  <div class="alert alert-success mt-3">
-        
-                    ¡Mensaje enviado correctamente!
-        
-                  </div>
-        
-                  }
-        
-                </form>
-        
-              </div>
-        
-            </div>
-        
-          </div>
-        
-        </section>
-      </div>
+<div class="col-lg-8 col-md-10 mx-auto">
+
+  <div class="card shadow-lg border-0 rounded-4">
+
+    <div class="card-header bg-primary text-white text-center py-3">
+      <h3 class="mb-0">
+        <i class="bi bi-envelope-fill me-2"></i>
+        Contáctanos
+      </h3>
     </div>
+
+    <div class="card-body p-4">
+
+      <form [formGroup]="contactoForm" (ngSubmit)="onSubmitContacto()">
+
+        <!-- Nombre -->
+        <div class="mb-4">
+
+          <label class="form-label fw-semibold">
+            Nombre Completo *
+          </label>
+
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            formControlName="nombre"
+            placeholder="Ingrese su nombre">
+
+          @if (
+          contactoForm.get('nombre')?.invalid &&
+          contactoForm.get('nombre')?.touched
+          ) {
+
+          <div class="text-danger mt-2">
+
+            @if (contactoForm.get('nombre')?.errors?.['required']) {
+            <small>El nombre es obligatorio.</small>
+            }
+
+            @if (contactoForm.get('nombre')?.errors?.['minlength']) {
+            <small>Mínimo 3 caracteres.</small>
+            }
+
+           @if (contactoForm.get('nombre')?.errors?.['numeros']) {
+           <small>El nombre no puede contener números.</small>
+            
+            }
+
+          </div>
+
+          }
+
+        </div>
+
+        <!-- Email -->
+        <div class="mb-4">
+
+          <label class="form-label fw-semibold">
+            Correo Electrónico *
+          </label>
+
+          <input
+            type="email"
+            class="form-control form-control-lg"
+            formControlName="email"
+            placeholder="ejemplo@correo.com">
+
+          @if (
+          contactoForm.get('email')?.invalid &&
+          contactoForm.get('email')?.touched
+          ) {
+
+          <div class="text-danger mt-2">
+
+            @if (contactoForm.get('email')?.errors?.['required']) {
+            <small>El correo es obligatorio.</small>
+            }
+
+            @if (contactoForm.get('email')?.errors?.['email']) {
+            <small>Ingrese un correo válido.</small>
+            }
+
+          </div>
+
+          }
+
+        </div>
+
+        <!-- Teléfono -->
+        <div class="mb-4">
+
+          <label class="form-label fw-semibold">
+            Teléfono
+          </label>
+
+          <input
+            type="tel"
+            class="form-control form-control-lg"
+            formControlName="telefono"
+            placeholder="3511234567">
+
+          @if (
+          contactoForm.get('telefono')?.errors?.['pattern']
+          ) {
+
+          <div class="text-danger mt-2">
+            <small>Solo se permiten números.</small>
+          </div>
+
+          }
+
+        </div>
+
+        <!-- Mensaje -->
+        <div class="mb-4">
+
+          <label class="form-label fw-semibold">
+            Mensaje *
+          </label>
+
+          <textarea
+            rows="5"
+            class="form-control"
+            formControlName="mensaje"
+            placeholder="Escriba su consulta aquí..."></textarea>
+
+          @if (
+          contactoForm.get('mensaje')?.invalid &&
+          contactoForm.get('mensaje')?.touched
+          ) {
+
+          <div class="text-danger mt-2">
+
+            @if (contactoForm.get('mensaje')?.errors?.['required']) {
+            <small>El mensaje es obligatorio.</small>
+            }
+
+            @if (contactoForm.get('mensaje')?.errors?.['minlength']) {
+            <small>Debe contener al menos 10 caracteres.</small>
+            }
+
+          </div>
+
+          }
+
+        </div>
+
+        <!-- Botón -->
+        <div class="d-grid">
+
+          <button
+            type="submit"
+            class="btn btn-primary btn-lg rounded-pill"
+            [disabled]="contactoForm.invalid">
+
+            Enviar Mensaje
+
+          </button>
+
+        </div>
+
+        <!-- Mensaje de éxito -->
+        @if (enviado) {
+
+        <div class="alert alert-success mt-4 text-center">
+
+          <strong>✓ Mensaje enviado correctamente</strong>
+
+        </div>
+
+        }
+
+      </form>
+
+    </div>
+
   </div>
+
+</div>
 </section>

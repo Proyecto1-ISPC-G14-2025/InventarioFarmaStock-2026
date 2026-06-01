@@ -1,3 +1,5 @@
+<!-- Login -NCALMUCCIN-->
+
 <div class="login-container">
   <div class="login-card" [class.shake-animation]="shaking">
     <h3 class="text-center mb-4">Ingreso al Sistema</h3>
@@ -20,20 +22,27 @@
         <label class="form-label">Contraseña</label>
         <input type="password" class="form-control" formControlName="password"
           [class.is-invalid]="(password?.touched || loginError) && password?.invalid">
-        
-        @if (password?.touched && password?.invalid) {
-          <div class="text-danger mt-1">
-            @if (password?.errors?.['required']) { <small>La contraseña es obligatoria.</small> }
-            @if (password?.errors?.['minlength']) { <small>Mínimo 6 caracteres.</small> }
-            @if (password?.errors?.['maxlength']) { <small>Máximo 20 caracteres.</small> }
-          </div>
-        }
+        <div class="text-danger mt-1" *ngIf="password?.touched && password?.invalid">
+          <small *ngIf="password?.errors?.['required']">La contraseña es obligatoria.</small>
+          <small *ngIf="password?.errors?.['minlength']">Mínimo 6 caracteres.</small>
+          <small *ngIf="password?.errors?.['maxlength']">Máximo 20 caracteres.</small>
+          <small *ngIf="password?.errors?.['sinNumero']">La contraseña debe contener al menos un número.</small>
+        </div>
       </div>
 
       <div class="d-grid mb-3">
         <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">
           Ingresar
         </button>
+<div class="text-center mt-3">
+  <button
+    type="button"
+    class="btn btn-link"
+    (click)="volverHome()">
+    ← Volver al Inicio
+  </button>
+</div>
+
       </div>
 
       <div class="error-message" [style.display]="loginError ? 'block' : 'none'">

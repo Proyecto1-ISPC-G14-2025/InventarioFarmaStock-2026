@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +22,7 @@ export class Home implements OnInit, OnDestroy {
     private cdr: ChangeDetectorRef
   ) {
     this.contactoForm = this.fb.group({
-      nombre: ['', [Validators.required, Validators.minLength(3)]],
+      nombre: [ '',[ Validators.required, Validators.minLength(3),this.nombreValido]],
       email: ['', [Validators.required, Validators.email]],
       telefono: ['', [Validators.pattern('^[0-9]+$')]],
       mensaje: ['', [Validators.required, Validators.minLength(10)]]
@@ -91,7 +91,12 @@ export class Home implements OnInit, OnDestroy {
     this.cdr.detectChanges();
     this.startAutoPlay();
   }
+nombreValido(control: AbstractControl): ValidationErrors | null {
 
+  const tieneNumeros = /\d/.test(control.value);
+
+  return tieneNumeros ? { numeros: true } : null;
+}
   onSubmitContacto(): void {
     if (this.contactoForm.valid) {
       console.log('Formulario enviado');

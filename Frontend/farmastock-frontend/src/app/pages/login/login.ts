@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  ReactiveFormsModule,
-  FormBuilder,
-  FormGroup,
-  Validators
-} from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors} from '@angular/forms';
+
 
 @Component({
   selector: 'app-login',
@@ -23,13 +19,39 @@ export class Login {
     'usuario@correo.com': { password: 'user123', role: 'user' },
   };
 
-  constructor(private router: Router, private fb: FormBuilder) {
+  constructor(
+    private router: Router,
+    private fb: FormBuilder
+  ) {
+     
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]]
+
+      email: [
+        '',
+        [
+          Validators.required,
+          Validators.email
+        ]
+      ],
+
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(20),
+          this.passwordConNumero
+        ]
+      ]
+  
     });
   }
+ passwordConNumero(control: AbstractControl): ValidationErrors | null {
 
+  const tieneNumero = /\d/.test(control.value);
+
+  return tieneNumero ? null : { sinNumero: true };
+}
   onLogin(): void {
     this.loginError = false;
     if (this.loginForm.invalid) {
@@ -50,6 +72,21 @@ export class Login {
       this.shaking = true;
       setTimeout(() => (this.shaking = false), 500);
     }
+
+  }
+  volverHome(): void {
+  this.router.navigate(['']);
+}
+  get email() {
+
+    return this.loginForm.get('email');
+
+  }
+
+  get password() {
+
+    return this.loginForm.get('password');
+
   }
 
   get email() { return this.loginForm.get('email'); }
