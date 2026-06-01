@@ -1,12 +1,11 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
@@ -16,6 +15,7 @@ export class Home implements OnInit, OnDestroy {
   currentSlide = 0;
   totalSlides = 3;
   autoPlayInterval: any;
+  porcentajeDesplazamiento = 33.33;
 
   constructor(
     private fb: FormBuilder,
@@ -31,13 +31,29 @@ export class Home implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.startAutoPlay();
+    this.evaluarPantalla();
+    
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', () => this.evaluarPantalla());
+    }
+  }
+
+  evaluarPantalla(): void {
+    if (typeof window !== 'undefined') {
+      if (window.innerWidth < 768) {
+        this.porcentajeDesplazamiento = 100;
+      } else {
+        this.porcentajeDesplazamiento = 33.33;
+      }
+      this.cdr.detectChanges();
+    }
   }
 
   ngOnDestroy(): void {
     this.stopAutoPlay();
   }
 
-  // --- Lógica de Autoslide ---
+  // --- Autoslide ---
   startAutoPlay(): void {
     this.stopAutoPlay();
     this.autoPlayInterval = setInterval(() => {
@@ -53,7 +69,7 @@ export class Home implements OnInit, OnDestroy {
 
   nextSlide(): void {
     this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
-    this.cdr.detectChanges(); // Forzamos a Angular a ver el cambio de slide
+    this.cdr.detectChanges();
   }
 
   moveCarousel(direction: number): void {
@@ -66,7 +82,7 @@ export class Home implements OnInit, OnDestroy {
       this.currentSlide = 0;
     }
     
-    this.cdr.detectChanges(); 
+    this.cdr.detectChanges();
     this.startAutoPlay();
   }
 
@@ -93,4 +109,3 @@ nombreValido(control: AbstractControl): ValidationErrors | null {
     }
   }
 }
-

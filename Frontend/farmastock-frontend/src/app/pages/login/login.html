@@ -9,10 +9,13 @@
         <label class="form-label">Correo Electrónico</label>
         <input type="email" class="form-control" formControlName="email"
           [class.is-invalid]="(email?.touched || loginError) && email?.invalid">
-        <div class="text-danger mt-1" *ngIf="email?.touched && email?.invalid">
-          <small *ngIf="email?.errors?.['required']">El correo es obligatorio.</small>
-          <small *ngIf="email?.errors?.['email']">Formato de correo inválido.</small>
-        </div>
+        
+        @if (email?.touched && email?.invalid) {
+          <div class="text-danger mt-1">
+            @if (email?.errors?.['required']) { <small>El correo es obligatorio.</small> }
+            @if (email?.errors?.['email']) { <small>Formato de correo inválido.</small> }
+          </div>
+        }
       </div>
 
       <div class="mb-3">
