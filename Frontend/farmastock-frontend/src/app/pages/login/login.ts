@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors} from '@angular/forms';
 
-import {
-  ReactiveFormsModule,
-  FormBuilder,
-  FormGroup,
-  Validators
-} from '@angular/forms';
 
 import { CommonModule } from '@angular/common';
 
@@ -44,7 +39,7 @@ export class Login {
     private router: Router,
     private fb: FormBuilder
   ) {
-
+     
     this.loginForm = this.fb.group({
 
       email: [
@@ -60,14 +55,20 @@ export class Login {
         [
           Validators.required,
           Validators.minLength(6),
-          Validators.maxLength(20)
+          Validators.maxLength(20),
+          this.passwordConNumero
         ]
       ]
-
+  
     });
 
   }
+ passwordConNumero(control: AbstractControl): ValidationErrors | null {
 
+  const tieneNumero = /\d/.test(control.value);
+
+  return tieneNumero ? null : { sinNumero: true };
+}
   onLogin(): void {
 
     this.loginError = false;
@@ -111,7 +112,9 @@ export class Login {
     }
 
   }
-
+  volverHome(): void {
+  this.router.navigate(['']);
+}
   get email() {
 
     return this.loginForm.get('email');

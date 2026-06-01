@@ -1,4 +1,5 @@
-<!-- Login NO CAMBIAR FORMULARIO REACTIVO -NCALMUCCI-->
+<!-- Login -NCALMUCCIN-->
+
 <div class="login-container">
   <div class="login-card" [class.shake-animation]="shaking">
     <h3 class="text-center mb-4">Ingreso al Sistema</h3>
@@ -22,6 +23,7 @@
           <small *ngIf="password?.errors?.['required']">La contraseña es obligatoria.</small>
           <small *ngIf="password?.errors?.['minlength']">Mínimo 6 caracteres.</small>
           <small *ngIf="password?.errors?.['maxlength']">Máximo 20 caracteres.</small>
+          <small *ngIf="password?.errors?.['sinNumero']">La contraseña debe contener al menos un número.</small>
         </div>
       </div>
 
@@ -29,6 +31,15 @@
         <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">
           Ingresar
         </button>
+<div class="text-center mt-3">
+  <button
+    type="button"
+    class="btn btn-link"
+    (click)="volverHome()">
+    ← Volver al Inicio
+  </button>
+</div>
+
       </div>
 
       <div class="error-message" [style.display]="loginError ? 'block' : 'none'">
