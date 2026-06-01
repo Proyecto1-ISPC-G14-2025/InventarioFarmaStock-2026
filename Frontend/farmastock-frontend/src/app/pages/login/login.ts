@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors} from '@angular/forms';
-
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './login.html',
-  styleUrl: './login.css'
+  styleUrls: ['./login.css']
 })
 export class Login {
   loginError = false;
@@ -23,45 +23,39 @@ export class Login {
     private router: Router,
     private fb: FormBuilder
   ) {
-     
     this.loginForm = this.fb.group({
-
-      email: [
-        '',
-        [
-          Validators.required,
-          Validators.email
-        ]
-      ],
-
-      password: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(6),
-          Validators.maxLength(20),
-          this.passwordConNumero
-        ]
-      ]
-  
+      email: ['', [
+        Validators.required,
+        Validators.email
+      ]],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(20),
+        this.passwordConNumero
+      ]]
     });
   }
- passwordConNumero(control: AbstractControl): ValidationErrors | null {
 
-  const tieneNumero = /\d/.test(control.value);
+  passwordConNumero(control: AbstractControl): ValidationErrors | null {
+    const tieneNumero = /\d/.test(control.value);
+    return tieneNumero ? null : { sinNumero: true };
+  }
 
-  return tieneNumero ? null : { sinNumero: true };
-}
   onLogin(): void {
     this.loginError = false;
+    
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
       return;
     }
+
     const { email, password } = this.loginForm.value;
     const user = this.usuarios[email ?? ''];
+
     if (user && user.password === password) {
       localStorage.setItem('userRole', user.role);
+      
       if (user.role === 'admin') {
         this.router.navigate(['/admin']);
       } else if (user.role === 'user') {
@@ -72,23 +66,18 @@ export class Login {
       this.shaking = true;
       setTimeout(() => (this.shaking = false), 500);
     }
-
   }
+
   volverHome(): void {
-  this.router.navigate(['']);
-}
+    this.router.navigate(['']);
+  }
+
+  // ✅ Getters SOLAMENTE UNA VEZ cada uno (eliminé duplicados)
   get email() {
-
     return this.loginForm.get('email');
-
   }
 
   get password() {
-
     return this.loginForm.get('password');
-
   }
-
-  get email() { return this.loginForm.get('email'); }
-  get password() { return this.loginForm.get('password'); }
 }
