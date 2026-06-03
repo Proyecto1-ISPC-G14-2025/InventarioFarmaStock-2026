@@ -1,7 +1,9 @@
 from rest_framework import viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from django.utils import timezone
+from django.db import models
 from datetime import timedelta
 
 from .models import Proveedor, Medicamento, Usuario, Movimiento
@@ -11,11 +13,13 @@ from .serializers import (
     UsuarioSerializer,
     MovimientoSerializer,
 )
+from .permissions import EsAdminOSoloLectura, EsAdmin
 
 
 class ProveedorViewSet(viewsets.ModelViewSet):
     queryset = Proveedor.objects.all().order_by('nombre')
     serializer_class = ProveedorSerializer
+    permission_classes = [EsAdminOSoloLectura]
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -41,6 +45,7 @@ class ProveedorViewSet(viewsets.ModelViewSet):
 class MedicamentoViewSet(viewsets.ModelViewSet):
     queryset = Medicamento.objects.all().order_by('nombre')
     serializer_class = MedicamentoSerializer
+    permission_classes = [EsAdminOSoloLectura]
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -83,6 +88,7 @@ class MedicamentoViewSet(viewsets.ModelViewSet):
 class UsuarioViewSet(viewsets.ModelViewSet):
     queryset = Usuario.objects.all().order_by('nombre')
     serializer_class = UsuarioSerializer
+    permission_classes = [EsAdmin]  # Solo admins pueden gestionar usuarios
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -108,13 +114,13 @@ class UsuarioViewSet(viewsets.ModelViewSet):
 class MovimientoViewSet(viewsets.ModelViewSet):
     queryset = Movimiento.objects.all().order_by('-fecha')
     serializer_class = MovimientoSerializer
+    permission_classes = [IsAuthenticated]  # Cualquier usuario autenticado
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         if not serializer.is_valid():
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         movimiento = serializer.save()
-        # Actualizar stock del medicamento
         med = movimiento.medicamento
         if movimiento.tipo == 'entrada':
             med.stock_actual += movimiento.cantidad

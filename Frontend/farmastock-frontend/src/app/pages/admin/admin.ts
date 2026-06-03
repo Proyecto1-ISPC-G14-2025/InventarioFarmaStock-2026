@@ -1,12 +1,13 @@
 import { Component, OnInit, ChangeDetectorRef, Inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductosService, Medicamento, Proveedor } from '../../services/productos.service';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-admin',
-  imports: [RouterLink, ReactiveFormsModule, CommonModule],
+  standalone: true,
+  imports: [RouterLink, ReactiveFormsModule, FormsModule],
   templateUrl: './admin.html',
   styleUrl: './admin.css'
 })
@@ -19,10 +20,10 @@ export class Admin implements OnInit {
   cargando: boolean = false;
 
   constructor(
-  private fb: FormBuilder,
-  @Inject(ProductosService) private productosService: ProductosService,
-  private cdr: ChangeDetectorRef
-) {
+    private fb: FormBuilder,
+    @Inject(ProductosService) private productosService: ProductosService,
+    private cdr: ChangeDetectorRef
+  ) {
     this.formulario = this.fb.group({
       nombre:           ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
       codigo_barras:    ['', [Validators.required, Validators.pattern(/^\d{7,13}$/)]],
@@ -32,51 +33,62 @@ export class Admin implements OnInit {
       stock_minimo:     [5,  [Validators.required, Validators.min(0)]],
       precio_compra:    [0,  [Validators.required, Validators.min(0.01)]],
       fecha_expiracion: ['', [Validators.required]],
-      proveedor:        [null],
+      proveedor:        [null]
     });
   }
 
   ngOnInit(): void {
-    this.cargarMedicamentos();
-    this.cargarProveedores();
+    this.cargarDatos();
+  }
+
+  cargarDatos(): void {
+    this.cargando = true;
+    forkJoin({
+      productos: this.productosService.getAll(),
+      proveedores: this.productosService.getProveedores()
+    }).subscribe({
+      next: (res) => {
+        this.medicamentos = res.productos;
+        this.proveedores = res.proveedores;
+        this.cargando = false;
+      },
+      error: () => {
+        this.mostrarMensaje('Error al cargar datos del servidor', 'danger');
+        this.cargando = false;
+      }
+    });
   }
 
   get stockBajoCount(): number {
     return this.medicamentos.filter(m => m.stock_actual <= m.stock_minimo).length;
   }
 
-  cargarMedicamentos(): void {
-    this.productosService.getAll().subscribe({
-      next: (data) => {
-        this.medicamentos = [...data];
-        this.cdr.detectChanges();
-      },
-      error: () => this.mostrarMensaje('Error al cargar medicamentos', 'danger')
-    });
+  // --- Puentes y Validaciones (HTML) ---
+  campo(nombreCampo: string) {
+    return this.formulario.get(nombreCampo);
   }
 
-  cargarProveedores(): void {
-    this.productosService.getProveedores().subscribe({
-      next: (data) => {
-        this.proveedores = data;
-        this.cdr.detectChanges();
-      },
-      error: () => console.warn('No se pudieron cargar los proveedores')
-    });
+  invalido(campo: string): boolean | null {
+    const control = this.formulario.get(campo);
+    return control && control.errors && control.touched;
   }
 
   onSubmit(): void {
+    this.guardar();
+  }
+
+  guardar(): void {
     if (this.formulario.invalid) {
       this.formulario.markAllAsTouched();
       return;
     }
+
     this.cargando = true;
-    const valor = this.formulario.value;
-    if (!valor.proveedor) valor.proveedor = null;
-    this.productosService.create(valor).subscribe({
+    const datos = this.formulario.value;
+
+    this.productosService.create(datos).subscribe({
       next: (nuevoMedicamento) => {
         this.medicamentos = [...this.medicamentos, nuevoMedicamento];
-        this.cdr.detectChanges();
         this.mostrarMensaje('Medicamento registrado correctamente', 'success');
         this.formulario.reset({ stock_actual: 0, stock_minimo: 5, precio_compra: 0, proveedor: null });
         this.cargando = false;
@@ -96,7 +108,6 @@ export class Admin implements OnInit {
     this.productosService.delete(id).subscribe({
       next: () => {
         this.medicamentos = this.medicamentos.filter(m => m.id !== id);
-        this.cdr.detectChanges();
         this.mostrarMensaje('Medicamento eliminado', 'success');
       },
       error: () => this.mostrarMensaje('Error al eliminar', 'danger')
@@ -106,12 +117,10 @@ export class Admin implements OnInit {
   mostrarMensaje(texto: string, tipo: 'success' | 'danger'): void {
     this.mensaje = texto;
     this.mensajeTipo = tipo;
-    setTimeout(() => { this.mensaje = ''; this.mensajeTipo = ''; }, 4000);
-  }
-
-  campo(nombre: string) { return this.formulario.get(nombre); }
-  invalido(nombre: string): boolean {
-    const c = this.campo(nombre);
-    return !!(c && c.invalid && c.touched);
+    setTimeout(() => {
+      this.mensaje = '';
+      this.mensajeTipo = '';
+      this.cdr.detectChanges();
+    }, 3000);
   }
 }
