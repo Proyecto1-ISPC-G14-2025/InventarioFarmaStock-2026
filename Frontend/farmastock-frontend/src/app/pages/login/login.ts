@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-<<<<<<< HEAD
 import {
   ReactiveFormsModule,
   FormBuilder,
   FormGroup,
-  Validators
+  Validators,
+  AbstractControl,
+  ValidationErrors
 } from '@angular/forms';
-=======
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
->>>>>>> origin/develop
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 
@@ -24,13 +22,6 @@ export class Login {
   loginError = false;
   shaking = false;
   loginForm!: FormGroup;
-<<<<<<< HEAD
-=======
-  usuarios: Record<string, { password: string; role: string }> = {
-    'admin@correo.com': { password: 'admin123', role: 'admin' },
-    'usuario@correo.com': { password: 'user123', role: 'user' },
-  };
->>>>>>> origin/develop
 
   constructor(
     private router: Router,
@@ -57,25 +48,37 @@ export class Login {
   }
 
   onLogin(): void {
+
+    console.log('BOTON INGRESAR');
+
     this.loginError = false;
-    
+
     if (this.loginForm.invalid) {
+      console.log('FORMULARIO INVALIDO');
+      console.log(this.loginForm.value);
+
       this.loginForm.markAllAsTouched();
       return;
     }
 
-    const { email, password } = this.loginForm.value;
-<<<<<<< HEAD
+    console.log('FORMULARIO VALIDO');
+
+    const { password } = this.loginForm.value;
+
+    console.log('ENVIANDO REQUEST A DJANGO...');
 
     this.http.post<any>(
       'http://localhost:8000/api/auth/login/',
       {
-        username: email,
+        username: 'admin',
         password: password
       }
     ).subscribe({
 
       next: (data) => {
+
+        console.log('LOGIN OK');
+        console.log(data);
 
         localStorage.setItem('token', data.token);
         localStorage.setItem('rol', data.rol);
@@ -83,57 +86,34 @@ export class Login {
         localStorage.setItem('user_id', data.user_id);
 
         if (data.rol === 'admin') {
-
           this.router.navigate(['/admin']);
-
         } else {
-
           this.router.navigate(['/usuario']);
-
         }
 
       },
 
-      error: () => {
+      error: (err) => {
+
+        console.log('ERROR LOGIN');
+        console.log(err);
 
         this.loginError = true;
-
         this.shaking = true;
 
         setTimeout(() => {
-
           this.shaking = false;
-
         }, 600);
 
       }
 
     });
-
-=======
-    const user = this.usuarios[email ?? ''];
-
-    if (user && user.password === password) {
-      localStorage.setItem('userRole', user.role);
-      
-      if (user.role === 'admin') {
-        this.router.navigate(['/admin']);
-      } else if (user.role === 'user') {
-        this.router.navigate(['/usuario']);
-      }
-    } else {
-      this.loginError = true;
-      this.shaking = true;
-      setTimeout(() => (this.shaking = false), 500);
-    }
->>>>>>> origin/develop
   }
 
   volverHome(): void {
     this.router.navigate(['']);
   }
 
-  // ✅ Getters SOLAMENTE UNA VEZ cada uno (eliminé duplicados)
   get email() {
     return this.loginForm.get('email');
   }
