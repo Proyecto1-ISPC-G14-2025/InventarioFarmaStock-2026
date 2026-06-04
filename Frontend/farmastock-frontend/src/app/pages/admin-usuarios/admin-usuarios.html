@@ -1,6 +1,5 @@
 <!-- Navbar eliminada por components shared navbar -ncalmuccin -->
 
-
 <!-- Container principal -->
 <div class="container mt-4">
 
@@ -17,49 +16,51 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>Juan Lopez</td>
-        <td>jlopez&#64;gmail.com</td>
-        <td>abc1234</td>
-        <td>Usuario</td>
-        <td>
-          <button class="btn btn-sm btn-primary">Editar</button>
-          <button class="btn btn-sm btn-danger">Eliminar</button>
-        </td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Ivan Muñoz</td>
-        <td>imunoz&#64;gmail.com</td>
-        <td>nchjd123</td>
-        <td>Administrador</td>
-        <td>
-          <button class="btn btn-sm btn-primary">Editar</button>
-          <button class="btn btn-sm btn-danger">Eliminar</button>
-        </td>
-      </tr>
+      @for (user of usuarios; track user.id) {
+        <tr>
+          <td>{{ user.id }}</td>
+          <td>{{ user.nombre }}</td>
+          <td>{{ user.email }}</td>
+          <td><code>{{ user.password }}</code></td>
+          <td>
+            <span class="badge" [ngClass]="user.rol === 'Administrador' ? 'bg-danger' : 'bg-primary'">
+              {{ user.rol }}
+            </span>
+          </td>
+          <td>
+            <button class="btn btn-sm btn-primary me-1" (click)="editarUsuario(user)">Editar</button>
+            <button class="btn btn-sm btn-danger" (click)="eliminarUsuario(user.id)">Eliminar</button>
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="6" class="text-center text-muted">No hay usuarios registrados en el sistema.</td>
+        </tr>
+      }
     </tbody>
   </table>
 
-  <h3>Agregar Nuevo Usuario</h3>
-  <form>
+  <h3 class="mt-5">Agregar / Modificar Usuario</h3>
+  <form (ngSubmit)="agregarUsuario()" class="card p-4 bg-light mb-5">
     <div class="mb-3">
       <label class="form-label">Nombre</label>
-      <input type="text" class="form-control" placeholder="Nombre del usuario" required />
+      <input type="text" name="nombre" [(ngModel)]="nuevoUsuario.nombre" class="form-control" placeholder="Nombre del usuario" required />
     </div>
     <div class="mb-3">
       <label class="form-label">Email</label>
-      <input type="email" class="form-control" placeholder="Email" required />
+      <input type="email" name="email" [(ngModel)]="nuevoUsuario.email" class="form-control" placeholder="Email" required />
     </div>
     <div class="mb-3">
       <label class="form-label">Password</label>
-      <input type="password" class="form-control" placeholder="Password" required />
+      <input type="password" name="password" [(ngModel)]="nuevoUsuario.password" class="form-control" placeholder="Password" required />
     </div>
     <div class="mb-3">
       <label class="form-label">Rol</label>
-      <input type="text" class="form-control" placeholder="Rol" required />
+      <select name="rol" [(ngModel)]="nuevoUsuario.rol" class="form-select">
+        <option value="Usuario">Usuario (Empleado)</option>
+        <option value="Administrador">Administrador</option>
+      </select>
     </div>
-    <button type="submit" class="btn btn-success">Agregar</button>
+    <button type="submit" class="btn btn-success">Registrar Usuario</button>
   </form>
 </div>

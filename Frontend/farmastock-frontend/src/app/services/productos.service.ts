@@ -24,8 +24,6 @@ export interface Proveedor {
   email?: string;
 }
 
-const JSON_HEADERS = new HttpHeaders({ 'Accept': 'application/json' });
-
 @Injectable({
   providedIn: 'root'
 })
@@ -35,23 +33,33 @@ export class ProductosService {
 
   constructor(private http: HttpClient) {}
 
+  // Función auxiliar privada para generar las cabeceras con el Token activo de forma dinámica
+  private getAuthHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token');
+    return new HttpHeaders({
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`
+    });
+  }
+
   getAll(): Observable<Medicamento[]> {
-    return this.http.get<Medicamento[]>(this.apiUrl, { headers: JSON_HEADERS });
+    return this.http.get<Medicamento[]>(this.apiUrl, { headers: this.getAuthHeaders() });
   }
 
   create(medicamento: Medicamento): Observable<Medicamento> {
-    return this.http.post<Medicamento>(this.apiUrl, medicamento, { headers: JSON_HEADERS });
+    return this.http.post<Medicamento>(this.apiUrl, medicamento, { headers: this.getAuthHeaders() });
   }
 
   update(id: number, medicamento: Medicamento): Observable<Medicamento> {
-    return this.http.put<Medicamento>(`${this.apiUrl}${id}/`, medicamento, { headers: JSON_HEADERS });
+    return this.http.put<Medicamento>(`${this.apiUrl}${id}/`, medicamento, { headers: this.getAuthHeaders() });
   }
 
   delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}${id}/`, { headers: JSON_HEADERS });
+    return this.http.delete<void>(`${this.apiUrl}${id}/`, { headers: this.getAuthHeaders() });
   }
 
   getProveedores(): Observable<Proveedor[]> {
-    return this.http.get<Proveedor[]>(this.proveedoresUrl, { headers: JSON_HEADERS });
+    return this.http.get<Proveedor[]>(this.proveedoresUrl, { headers: this.getAuthHeaders() });
   }
 }
