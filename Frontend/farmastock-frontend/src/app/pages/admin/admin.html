@@ -1,19 +1,7 @@
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Inventario Farmacia FarmaStock</a>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/admin-usuarios">Usuarios</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="/login">Cerrar Sesión</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
+<!-- Navbar del component shared navbar eliminada por ncalmuccin-->
+
 
 <div class="container mt-4">
-
   <!-- Tarjetas resumen -->
   <div class="row mb-4">
     <div class="col-md-4">
@@ -88,7 +76,10 @@
     <div class="row">
       <div class="col-md-6 mb-3">
         <label class="form-label">Nombre *</label>
-        <input type="text" class="form-control" formControlName="nombre"
+        <input 
+          type="text" 
+          class="form-control" 
+          formControlName="nombre"
           [class.is-invalid]="invalido('nombre')">
         @if (invalido('nombre')) {
           <div class="invalid-feedback">
@@ -101,7 +92,10 @@
 
       <div class="col-md-6 mb-3">
         <label class="form-label">Código de Barras *</label>
-        <input type="text" class="form-control" formControlName="codigo_barras"
+        <input 
+          type="text" 
+          class="form-control" 
+          formControlName="codigo_barras"
           [class.is-invalid]="invalido('codigo_barras')">
         @if (invalido('codigo_barras')) {
           <div class="invalid-feedback">
@@ -115,7 +109,10 @@
     <div class="row">
       <div class="col-md-6 mb-3">
         <label class="form-label">Categoría *</label>
-        <input type="text" class="form-control" formControlName="categoria"
+        <input 
+          type="text" 
+          class="form-control" 
+          formControlName="categoria"
           [class.is-invalid]="invalido('categoria')">
         @if (invalido('categoria')) {
           <div class="invalid-feedback">La categoría es obligatoria (mínimo 3 caracteres).</div>
@@ -124,7 +121,10 @@
 
       <div class="col-md-6 mb-3">
         <label class="form-label">Lote *</label>
-        <input type="text" class="form-control" formControlName="lote"
+        <input 
+          type="text" 
+          class="form-control" 
+          formControlName="lote"
           [class.is-invalid]="invalido('lote')">
         @if (invalido('lote')) {
           <div class="invalid-feedback">El lote es obligatorio.</div>
@@ -135,7 +135,10 @@
     <div class="row">
       <div class="col-md-3 mb-3">
         <label class="form-label">Stock Actual *</label>
-        <input type="number" class="form-control" formControlName="stock_actual"
+        <input 
+          type="number" 
+          class="form-control" 
+          formControlName="stock_actual"
           [class.is-invalid]="invalido('stock_actual')">
         @if (invalido('stock_actual')) {
           <div class="invalid-feedback">No puede ser negativo.</div>
@@ -144,7 +147,10 @@
 
       <div class="col-md-3 mb-3">
         <label class="form-label">Stock Mínimo *</label>
-        <input type="number" class="form-control" formControlName="stock_minimo"
+        <input 
+          type="number" 
+          class="form-control" 
+          formControlName="stock_minimo"
           [class.is-invalid]="invalido('stock_minimo')">
         @if (invalido('stock_minimo')) {
           <div class="invalid-feedback">No puede ser negativo.</div>
@@ -153,7 +159,11 @@
 
       <div class="col-md-3 mb-3">
         <label class="form-label">Precio de Compra *</label>
-        <input type="number" step="0.01" class="form-control" formControlName="precio_compra"
+        <input 
+          type="number" 
+          step="0.01" 
+          class="form-control" 
+          formControlName="precio_compra"
           [class.is-invalid]="invalido('precio_compra')">
         @if (invalido('precio_compra')) {
           <div class="invalid-feedback">El precio debe ser mayor a 0.</div>
@@ -162,7 +172,10 @@
 
       <div class="col-md-3 mb-3">
         <label class="form-label">Fecha de Expiración *</label>
-        <input type="date" class="form-control" formControlName="fecha_expiracion"
+        <input 
+          type="date" 
+          class="form-control" 
+          formControlName="fecha_expiracion"
           [class.is-invalid]="invalido('fecha_expiracion')">
         @if (invalido('fecha_expiracion')) {
           <div class="invalid-feedback">La fecha es obligatoria.</div>
@@ -185,6 +198,5 @@
     <button type="submit" class="btn btn-success" [disabled]="cargando">
       {{ cargando ? 'Guardando...' : 'Agregar Medicamento' }}
     </button>
-
   </form>
 </div>
