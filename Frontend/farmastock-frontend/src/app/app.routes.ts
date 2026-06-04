@@ -22,7 +22,7 @@ const userGuard = () => {
   const router = inject(Router);
   const role = localStorage.getItem('userRole');
 
-  if (role === 'user') {
+  if (role === 'user' || role === 'usuario') {
     return true;
   } else if (role === 'admin') {
     router.navigate(['/admin']);

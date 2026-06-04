@@ -1,28 +1,28 @@
 <!-- Modificacion de Menu de Usuario ncalmuccin -->
 <div class="container mt-4">
   <div class="row mb-4">
-    <div class="col-md-4">
+    <div class="col-md-6">
       <div class="card text-white bg-success mb-3">
-        <div class="card-header">Medicamentos en Stock</div>
+        <div class="card-header">Medicamentos en Stock (Total Unidades)</div>
         <div class="card-body">
           <h5 class="card-title">{{ totalStock }}</h5>
-          <p class="card-text">Total de medicamentos disponibles</p>
+          <p class="card-text">Total de unidades físicas disponibles en MySQL</p>
         </div>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
       <div class="card text-white bg-warning mb-3">
-        <div class="card-header">Medicamentos Próximos a Expirar</div>
+        <div class="card-header">Alertas de Stock Mínimo</div>
         <div class="card-body">
           <h5 class="card-title">{{ proximosAVencer }}</h5>
-          <p class="card-text">Artículos con fecha próxima de vencimiento</p>
+          <p class="card-text">Productos que requieren reposición urgente</p>
         </div>
       </div>
     </div>
   </div>
 
-  <h3>Medicamentos</h3>
-  <table class="table table-striped table-bordered">
+  <h3>Panel de Consulta de Inventario</h3>
+  <table class="table table-striped table-bordered mt-3">
     <thead class="table-dark">
       <tr>
         <th>ID</th>
@@ -39,18 +39,22 @@
           <td>{{ med.id }}</td>
           <td>{{ med.nombre }}</td>
           <td>{{ med.lote }}</td>
-          <td>{{ med.cantidad }}</td>
-          <td>{{ med.expiracion }}</td>
+          <td>{{ med.stock_actual }}</td>
+          <td>{{ med.fecha_expiracion }}</td>
           <td>
             <button class="btn btn-sm btn-primary" (click)="editarMedicamento(med.id)">Editar</button>
           </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="6" class="text-center">No hay medicamentos registrados en el sistema o falta iniciar sesión.</td>
         </tr>
       }
     </tbody>
   </table>
 
-  <h3>Agregar Nuevo Medicamento</h3>
-  <form (ngSubmit)="agregarMedicamento()">
+  <h3 class="mt-5">Agregar Nuevo Medicamento (Temporal)</h3>
+  <form (ngSubmit)="agregarMedicamentoLocal()" class="card p-3 bg-light mb-5">
     <div class="mb-3">
       <label class="form-label">Nombre</label>
       <input type="text" name="nombre" [(ngModel)]="nuevoMedicamento.nombre" class="form-control" placeholder="Nombre del medicamento" required />
@@ -61,12 +65,12 @@
     </div>
     <div class="mb-3">
       <label class="form-label">Cantidad</label>
-      <input type="number" name="cantidad" [(ngModel)]="nuevoMedicamento.cantidad" class="form-control" placeholder="Cantidad en stock" required />
+      <input type="number" name="stock_actual" [(ngModel)]="nuevoMedicamento.stock_actual" class="form-control" placeholder="Cantidad en stock" required />
     </div>
     <div class="mb-3">
       <label class="form-label">Fecha de Expiración</label>
-      <input type="date" name="expiracion" [(ngModel)]="nuevoMedicamento.expiracion" class="form-control" required />
+      <input type="date" name="fecha_expiracion" [(ngModel)]="nuevoMedicamento.fecha_expiracion" class="form-control" required />
     </div>
-    <button type="submit" class="btn btn-success">Agregar</button>
+    <button type="submit" class="btn btn-success">Agregar a la Lista Temporal</button>
   </form>
 </div>
