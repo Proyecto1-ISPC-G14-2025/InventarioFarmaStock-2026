@@ -48,65 +48,55 @@ export class Login {
   }
 
   onLogin(): void {
-
     console.log('BOTON INGRESAR');
-
     this.loginError = false;
 
     if (this.loginForm.invalid) {
       console.log('FORMULARIO INVALIDO');
-      console.log(this.loginForm.value);
-
       this.loginForm.markAllAsTouched();
       return;
     }
 
     console.log('FORMULARIO VALIDO');
-
-    const { password } = this.loginForm.value;
+    
+    const { email, password } = this.loginForm.value;
 
     console.log('ENVIANDO REQUEST A DJANGO...');
 
     this.http.post<any>(
       'http://localhost:8000/api/auth/login/',
       {
-        username: 'admin',
+        username: email,
         password: password
       }
     ).subscribe({
-
       next: (data) => {
-
-        console.log('LOGIN OK');
-        console.log(data);
+        console.log('LOGIN OK', data);
 
         localStorage.setItem('token', data.token);
-        localStorage.setItem('rol', data.rol);
         localStorage.setItem('nombre', data.nombre);
         localStorage.setItem('user_id', data.user_id);
+        
+        localStorage.setItem('rol', data.role);
+        localStorage.setItem('userRole', data.rol); 
 
-        if (data.rol === 'admin') {
-          this.router.navigate(['/admin']);
-        } else {
-          this.router.navigate(['/usuario']);
-        }
-
+        setTimeout(() => {
+          if (data.rol === 'admin') {
+            this.router.navigate(['/admin']);
+          } else {
+            this.router.navigate(['/usuario']);
+          }
+        }, 50);
       },
-
       error: (err) => {
-
-        console.log('ERROR LOGIN');
-        console.log(err);
-
+        console.log('ERROR LOGIN', err);
         this.loginError = true;
         this.shaking = true;
 
         setTimeout(() => {
           this.shaking = false;
         }, 600);
-
       }
-
     });
   }
 
