@@ -63,14 +63,14 @@ export class Login {
 
     console.log('FORMULARIO VALIDO');
 
-    const { password } = this.loginForm.value;
+    const { email, password } = this.loginForm.value;
 
     console.log('ENVIANDO REQUEST A DJANGO...');
 
     this.http.post<any>(
       'http://localhost:8000/api/auth/login/',
       {
-        username: 'admin',
+        username: email,
         password: password
       }
     ).subscribe({
@@ -81,15 +81,15 @@ export class Login {
         console.log(data);
 
         localStorage.setItem('token', data.token);
-        localStorage.setItem('rol', data.rol);
+        localStorage.setItem('userRole', data.rol);
         localStorage.setItem('nombre', data.nombre);
         localStorage.setItem('user_id', data.user_id);
 
         if (data.rol === 'admin') {
-          this.router.navigate(['/admin']);
-        } else {
-          this.router.navigate(['/usuario']);
-        }
+  setTimeout(() => this.router.navigate(['/admin']), 100);
+} else {
+  setTimeout(() => this.router.navigate(['/usuario']), 100);
+}
 
       },
 
