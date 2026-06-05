@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Proveedor(models.Model):
@@ -15,9 +16,26 @@ class Proveedor(models.Model):
 
 
 class Medicamento(models.Model):
+    CATEGORIA_CHOICES = [
+        ('analgesico', 'Analgésico'),
+        ('antiinflamatorio', 'Antiinflamatorio'),
+        ('antibiotico', 'Antibiótico'),
+        ('antihipertensivo', 'Antihipertensivo'),
+        ('antidiabético', 'Antidiabético'),
+        ('vitamina', 'Vitamina / Suplemento'),
+        ('antihistaminico', 'Antihistamínico'),
+        ('gastrointestinal', 'Gastrointestinal'),
+        ('dermatologico', 'Dermatológico'),
+        ('otro', 'Otro'),
+    ]
+
     nombre = models.CharField(max_length=200)
     codigo_barras = models.CharField(max_length=100, unique=True)
-    categoria = models.CharField(max_length=100)
+    categoria = models.CharField(
+        max_length=50,
+        choices=CATEGORIA_CHOICES,
+        default='otro'
+    )
     lote = models.CharField(max_length=100)
     stock_actual = models.IntegerField(default=0)
     stock_minimo = models.IntegerField(default=5)
@@ -38,22 +56,28 @@ class Medicamento(models.Model):
         return self.nombre
 
 
-class Usuario(models.Model):
+class Perfil(models.Model):
+    """
+    Extiende auth.User con datos adicionales del sistema.
+    Un Perfil por cada User de Django.
+    """
     ROL_CHOICES = [
         ('admin', 'Administrador'),
         ('usuario', 'Usuario'),
     ]
-    nombre = models.CharField(max_length=200)
-    email = models.EmailField(unique=True)
-    password_hash = models.CharField(max_length=255)
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+        related_name='perfil'
+    )
     rol = models.CharField(max_length=10, choices=ROL_CHOICES, default='usuario')
     activo = models.BooleanField(default=True)
 
     class Meta:
-        db_table = 'usuarios'
+        db_table = 'perfiles'
 
     def __str__(self):
-        return self.email
+        return f"{self.user.username} ({self.rol})"
 
 
 class Movimiento(models.Model):
@@ -71,7 +95,7 @@ class Movimiento(models.Model):
         related_name='movimientos'
     )
     usuario = models.ForeignKey(
-        Usuario,
+        User,
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
