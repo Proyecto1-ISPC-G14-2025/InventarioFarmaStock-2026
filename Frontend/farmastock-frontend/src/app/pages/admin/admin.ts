@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, Inject } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProductosService, Medicamento, Proveedor } from '../../services/productos.service';
@@ -21,7 +21,7 @@ export class Admin implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    @Inject(ProductosService) private productosService: ProductosService,
+    private productosService: ProductosService,
     private cdr: ChangeDetectorRef
   ) {
     this.formulario = this.fb.group({
@@ -51,10 +51,13 @@ export class Admin implements OnInit {
         this.medicamentos = res.productos;
         this.proveedores = res.proveedores;
         this.cargando = false;
+        this.cdr.detectChanges();
       },
-      error: () => {
+      error: (err) => {
+        console.error('Error al cargar datos en el panel de administración:', err);
         this.mostrarMensaje('Error al cargar datos del servidor', 'danger');
         this.cargando = false;
+        this.cdr.detectChanges();
       }
     });
   }
@@ -63,7 +66,6 @@ export class Admin implements OnInit {
     return this.medicamentos.filter(m => m.stock_actual <= m.stock_minimo).length;
   }
 
-  // --- Puentes y Validaciones (HTML) ---
   campo(nombreCampo: string) {
     return this.formulario.get(nombreCampo);
   }
@@ -92,13 +94,16 @@ export class Admin implements OnInit {
         this.mostrarMensaje('Medicamento registrado correctamente', 'success');
         this.formulario.reset({ stock_actual: 0, stock_minimo: 5, precio_compra: 0, proveedor: null });
         this.cargando = false;
+        this.cdr.detectChanges();
       },
       error: (err) => {
+        console.error('Error crítico al intentar guardar medicamento:', err);
         const msg = err.status === 400
           ? 'Datos inválidos. Revisá el formulario.'
           : 'Error al registrar el medicamento.';
         this.mostrarMensaje(msg, 'danger');
         this.cargando = false;
+        this.cdr.detectChanges();
       }
     });
   }
@@ -109,14 +114,20 @@ export class Admin implements OnInit {
       next: () => {
         this.medicamentos = this.medicamentos.filter(m => m.id !== id);
         this.mostrarMensaje('Medicamento eliminado', 'success');
+        this.cdr.detectChanges();
       },
-      error: () => this.mostrarMensaje('Error al eliminar', 'danger')
+      error: () => {
+        this.mostrarMensaje('Error al eliminar', 'danger');
+        this.cdr.detectChanges();
+      }
     });
   }
 
   mostrarMensaje(texto: string, tipo: 'success' | 'danger'): void {
     this.mensaje = texto;
     this.mensajeTipo = tipo;
+    this.cdr.detectChanges();
+    
     setTimeout(() => {
       this.mensaje = '';
       this.mensajeTipo = '';
