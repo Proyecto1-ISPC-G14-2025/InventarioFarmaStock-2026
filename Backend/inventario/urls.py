@@ -3,14 +3,14 @@ from rest_framework.routers import DefaultRouter
 from .views import (
     ProveedorViewSet,
     MedicamentoViewSet,
-    UsuarioViewSet,
+    PerfilViewSet,
     MovimientoViewSet,
 )
 
 router = DefaultRouter()
 router.register(r'proveedores', ProveedorViewSet)
 router.register(r'medicamentos', MedicamentoViewSet)
-router.register(r'usuarios', UsuarioViewSet)
+router.register(r'perfiles', PerfilViewSet)
 router.register(r'movimientos', MovimientoViewSet)
 
 urlpatterns = [

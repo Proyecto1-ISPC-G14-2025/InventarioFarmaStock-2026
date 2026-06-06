@@ -33,7 +33,6 @@ export class ProductosService {
 
   constructor(private http: HttpClient) {}
 
-  // Función auxiliar privada para generar las cabeceras con el Token activo de forma dinámica
   private getAuthHeaders(): HttpHeaders {
     const token = localStorage.getItem('token');
     return new HttpHeaders({

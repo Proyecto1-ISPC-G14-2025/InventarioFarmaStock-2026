@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import authenticate
+from django.contrib.auth.models import User as DjangoUser
 
 
 @api_view(['POST'])
@@ -11,7 +12,7 @@ from django.contrib.auth import authenticate
 def login_view(request):
     """
     Endpoint: POST /api/auth/login/
-    Body: { "username": "admin", "password": "1234" }
+    Body: { "username": "admin@farmastock.com", "password": "1234" }
     Response: { "token": "abc123...", "rol": "admin", "nombre": "Admin" }
     """
     username = request.data.get('username')
@@ -23,7 +24,11 @@ def login_view(request):
             status=status.HTTP_400_BAD_REQUEST
         )
 
-    user = authenticate(username=username, password=password)
+    try:
+        django_user = DjangoUser.objects.get(email=username)
+        user = authenticate(username=django_user.username, password=password)
+    except DjangoUser.DoesNotExist:
+        user = authenticate(username=username, password=password)
 
     if not user:
         return Response(
@@ -37,10 +42,8 @@ def login_view(request):
             status=status.HTTP_403_FORBIDDEN
         )
 
-    # Crear o recuperar el token
     token, _ = Token.objects.get_or_create(user=user)
 
-    # Determinar rol
     rol = 'admin' if user.is_staff or user.is_superuser else 'usuario'
 
     return Response({
