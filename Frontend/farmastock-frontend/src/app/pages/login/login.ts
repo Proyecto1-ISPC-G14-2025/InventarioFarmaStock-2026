@@ -48,17 +48,21 @@ export class Login {
   }
 
   onLogin(): void {
+
     console.log('BOTON INGRESAR');
+
     this.loginError = false;
 
     if (this.loginForm.invalid) {
       console.log('FORMULARIO INVALIDO');
+      console.log(this.loginForm.value);
+
       this.loginForm.markAllAsTouched();
       return;
     }
 
     console.log('FORMULARIO VALIDO');
-    
+
     const { email, password } = this.loginForm.value;
 
     console.log('ENVIANDO REQUEST A DJANGO...');
@@ -70,33 +74,39 @@ export class Login {
         password: password
       }
     ).subscribe({
+
       next: (data) => {
-        console.log('LOGIN OK', data);
+
+        console.log('LOGIN OK');
+        console.log(data);
 
         localStorage.setItem('token', data.token);
+        localStorage.setItem('userRole', data.rol);
         localStorage.setItem('nombre', data.nombre);
         localStorage.setItem('user_id', data.user_id);
-        
-        localStorage.setItem('rol', data.role);
-        localStorage.setItem('userRole', data.rol); 
 
-        setTimeout(() => {
-          if (data.rol === 'admin') {
-            this.router.navigate(['/admin']);
-          } else {
-            this.router.navigate(['/usuario']);
-          }
-        }, 50);
+        if (data.rol === 'admin') {
+  setTimeout(() => this.router.navigate(['/admin']), 100);
+} else {
+  setTimeout(() => this.router.navigate(['/usuario']), 100);
+}
+
       },
+
       error: (err) => {
-        console.log('ERROR LOGIN', err);
+
+        console.log('ERROR LOGIN');
+        console.log(err);
+
         this.loginError = true;
         this.shaking = true;
 
         setTimeout(() => {
           this.shaking = false;
         }, 600);
+
       }
+
     });
   }
 

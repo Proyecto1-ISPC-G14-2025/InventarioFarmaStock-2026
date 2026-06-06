@@ -109,13 +109,24 @@
     <div class="row">
       <div class="col-md-6 mb-3">
         <label class="form-label">Categoría *</label>
-        <input 
-          type="text" 
-          class="form-control" 
+        <select 
+          class="form-select" 
           formControlName="categoria"
           [class.is-invalid]="invalido('categoria')">
+          <option value="">Seleccionar categoría</option>
+          <option value="analgesico">Analgésico</option>
+          <option value="antiinflamatorio">Antiinflamatorio</option>
+          <option value="antibiotico">Antibiótico</option>
+          <option value="antihipertensivo">Antihipertensivo</option>
+          <option value="antidiabético">Antidiabético</option>
+          <option value="vitamina">Vitamina / Suplemento</option>
+          <option value="antihistaminico">Antihistamínico</option>
+          <option value="gastrointestinal">Gastrointestinal</option>
+          <option value="dermatologico">Dermatológico</option>
+          <option value="otro">Otro</option>
+        </select>
         @if (invalido('categoria')) {
-          <div class="invalid-feedback">La categoría es obligatoria (mínimo 3 caracteres).</div>
+          <div class="invalid-feedback">La categoría es obligatoria.</div>
         }
       </div>
 
