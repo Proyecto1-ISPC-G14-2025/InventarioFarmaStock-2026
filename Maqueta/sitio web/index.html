@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Inventario Farmacia FarmaStock</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3148/3148097.png" type="image/x-icon">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="index-page">
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Inventario Farmacia FarmaStock</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#inicio">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#acerca">Acerca de</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#testimonios">Testimonios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#farmastock">FarmaStock</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#galeria">Galería</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contacto">Contacto</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">Usuarios</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero / Inicio -->
+  <section id="inicio" class="py-5 text-center bg-light hero-section">
+    <div class="container hero-content">
+      <h1 class="display-4 fw-bold mb-3 text-white hero-text-shadow-strong">Bienvenido a FarmaStock</h1>
+      <p class="lead mb-4 text-white hero-text-shadow-soft">Tu confianza es nuestra prioridad. Gestión efectiva de medicamentos disponibles para ti.</p>
+    </div>
+    
+    <!-- Imagen de fondo con superposición -->
+    <div class="hero-bg">
+      <img src="img/FarmaBanner.jpeg" 
+          alt="Banner FarmaStock" 
+          />
+    </div>
+    
+    <div class="container hero-content">
+    </div>
+  </section>
+
+  <!-- Acerca de -->
+  <section id="acerca" class="py-5">
+    <div class="container">
+      <h2 class="mb-4 text-center">Acerca de Nosotros</h2>
+      <p class="lead text-center mb-5">Somos especialistas en gestión de inventarios de medicamentos. Gestionamos nuestro inventario con los más altos estándares para garantizar disponibilidad y calidad de medicamentos.</p>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <img src="img/FarmaTablet.jpg" alt="FarmaTablet"
+          class="about-image" /> 
+        </div>
+        <div class="col-md-6">
+          <p>Ofrecemos un sistema de inventario actualizado para que siempre encuentres lo que necesitas. Nuestro equipo profesional está a tu disposición para asesorarte.</p>
+          <ul>
+            <li>Manejo riguroso de stock</li>
+            <li>Atención personalizada</li>
+            <li>Actualizaciones de inventario en tiempo real, seguimiento preciso de existencias</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonios -->
+  <section id="testimonios" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="mb-4 text-center">Testimonios</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card p-3 shadow-sm">
+            <p>"La facilidad para registrar entradas y salidas de medicamentos nos ahorra tiempo y reduce errores manuales. Ahora el equipo puede enfocarse más en la atención personalizada, sabiendo que el inventario está ordenado y actualizado."</p>
+            <h6 class="fw-bold mb-0">Carlos López</h6>
+            <small>Administrador de Farmacia</small>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card p-3 shadow-sm">
+            <p>"Con este sistema logramos identificar rápidamente los medicamentos próximos a vencer y planificar acciones para evitar pérdidas. La generación automática de reportes también nos ayuda a tomar decisiones inteligentes para el negocio"</p>
+            <h6 class="fw-bold mb-0">Carlos Pérez</h6>
+            <small>Gerente de Sucursal</small>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card p-3 shadow-sm">
+            <p>"Desde que implementamos el sistema de inventario, la gestión de medicamentos es mucho más eficiente. Podemos controlar el stock en tiempo real y evitar faltantes o excesos."</p>
+            <h6 class="fw-bold mb-0">Laura Gómez</h6>
+            <small>Farmacéutica</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FarmaStock -->
+<section id="farmastock" class="py-5">
+  <div class="container">
+    <h2 class="mb-4 text-center">FarmaStock</h2>
+
+<div class="row">
+      <div class="col-12 text-center">
+        <p>"Administrador web de Inventarios para medicamentos."</p>
+        
+        <div class="farmastock-image-wrapper">
+          <img src="img/admin.jpg" 
+              alt="Medicamentos" 
+              class="farmastock-image" />
+        </div>
+      <br/>
+      </center>
+    </div>
+    <br/>
+    <br/>
+      <center> <a href="https://github.com/Proyecto1-ISPC-G14-2025/InventarioFarmaStock" class="btn btn-primary btn-lg">DESCARGAR VERSIÓN DE PRUEBA</a> </center>
+    </div>
+  </section>
+
+  <!-- GALERÍA CON CARRUSEL -->
+  <section id="galeria" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="mb-4 text-center">Galería FarmaStock</h2>
+      
+      <div class="carousel-container">
+        <!-- Botones de navegación -->
+        <button class="carousel-nav prev" onclick="moveCarousel(-1)">❮</button>
+        <button class="carousel-nav next" onclick="moveCarousel(1)">❯</button>
+        
+        <!-- carrusel -->
+        <div class="carousel-track" id="carouselTrack">
+          <!-- Tarjeta 1: FarmaStock -->
+          <div class="carousel-card active">
+            <img src="img/LogoFarmaStock.png" alt="FarmaStock">
+            <div class="carousel-card-content">
+              <h5>FarmaStock</h5>
+              <p>Sistema completo de gestión de inventario diseñado específicamente para farmacias.</p>
+            </div>
+          </div>
+          
+          <!-- Tarjeta 2: Software Activos -->
+          <div class="carousel-card">
+            <img src="img/SoftwareActivos.png" alt="Software de Gestion de Activos Médicos">
+            <div class="carousel-card-content">
+              <h5>Software de Gestión de Activos Médicos</h5>
+              <p>Sistema específico de gestión de equipos médicos, mantenimiento y control de plazos de inspección.</p>
+            </div>
+          </div>
+          
+          <!-- Tarjeta 3: Software Inventario -->
+          <div class="carousel-card">
+            <img src="img/SoftwareInventario.png" alt="Software de Gestión de Inventarios Médicos">
+            <div class="carousel-card-content">
+              <h5>Software de Gestión de Inventarios Médicos</h5>
+              <p>Sistema para el manejo y gestión inteligente de stock y garantía de disponibilidad de insumos médicos.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Indicadores -->
+        <div class="carousel-dots" id="carouselDots">
+          <span class="carousel-dot active" onclick="goToSlide(0)"></span>
+          <span class="carousel-dot" onclick="goToSlide(1)"></span>
+          <span class="carousel-dot" onclick="goToSlide(2)"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto (CON VALIDACIÓN) -->
+  <section id="contacto" class="py-5">
+    <div class="container">
+      <h2 class="mb-4 text-center">Contacto</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <form class="needs-validation" novalidate>
+            <div class="mb-3">
+              <label for="nombreContacto" class="form-label">Nombre *</label>
+              <input type="text" class="form-control" id="nombreContacto" placeholder="Tu nombre" required minlength="3">
+              <div class="invalid-feedback">
+                Por favor ingresa tu nombre (mínimo 3 caracteres).
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="emailContacto" class="form-label">Correo Electrónico *</label>
+              <input type="email" class="form-control" id="emailContacto" placeholder="Tu email" required>
+              <div class="invalid-feedback">
+                Por favor ingresa un email válido.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="telefonoContacto" class="form-label">Teléfono</label>
+              <input type="tel" class="form-control" id="telefonoContacto" placeholder="Tu teléfono" pattern="[0-9]{9,15}">
+              <div class="invalid-feedback">
+                Por favor ingresa un número de teléfono válido (9-15 dígitos).
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="mensajeContacto" class="form-label">Mensaje *</label>
+              <textarea class="form-control" id="mensajeContacto" rows="4" placeholder="Escribe tu mensaje" required minlength="10" maxlength="500"></textarea>
+              <div class="invalid-feedback">
+                Por favor ingresa un mensaje (10-500 caracteres).
+              </div>
+              <div class="form-text">Máximo 500 caracteres</div>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="terminosContacto" required>
+              <label class="form-check-label" for="terminosContacto">Acepto los términos y condiciones *</label>
+              <div class="invalid-feedback">
+                Debes aceptar los términos y condiciones.
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Grupo 14 Sistemas Informáticos. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Script de Bootstrap y validación -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Validación de formularios Bootstrap
+    (function () {
+      'use strict'
+      var forms = document.querySelectorAll('.needs-validation')
+      Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+          form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+          }, false)
+        })
+    })()
+    
+    // Galeria CARRUSEL
+    let currentSlide = 0;
+    const track = document.getElementById('carouselTrack');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const cards = document.querySelectorAll('.carousel-card');
+    const cardCount = cards.length;
+    
+    // Calcular la posición central
+    function updateActiveCard() {
+      cards.forEach((card, index) => {
+        if (index === currentSlide) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+      
+      // Actualizar
+      dots.forEach((dot, index) => {
+        if (index === currentSlide) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+    
+    function moveCarousel(direction) {
+      currentSlide += direction;
+      
+      if (currentSlide < 0) currentSlide = cardCount - 1;
+      if (currentSlide >= cardCount) currentSlide = 0;
+      
+      updateCarousel();
+    }
+    
+    function goToSlide(slideIndex) {
+      if (slideIndex < 0) slideIndex = 0;
+      if (slideIndex >= cardCount) slideIndex = cardCount - 1;
+      
+      currentSlide = slideIndex;
+      updateCarousel();
+    }
+    
+    function updateCarousel() {
+      // Calcular la traslación necesaria para centrar la slide actual
+      const cardWidth = cards[0].offsetWidth + parseInt(getComputedStyle(track).gap);
+      const containerWidth = track.parentElement.offsetWidth;
+      const offset = (containerWidth / 2) - (cardWidth / 2) - (currentSlide * cardWidth);
+      
+      track.style.transform = `translateX(${offset}px)`;
+      
+      updateActiveCard();
+    }
+    
+    // Recalcular en redimensionamiento de ventana
+    window.addEventListener('resize', function() {
+      updateCarousel();
+    });
+    
+    // Inicializar carrusel
+    updateCarousel();
+    
+    // Auto slide cada 5 segundos
+    setInterval(() => {
+      moveCarousel(1);
+    }, 5000);
+  </script>
+</body>
+</html>

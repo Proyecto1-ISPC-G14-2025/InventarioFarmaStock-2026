@@ -1,0 +1,21 @@
+# --- FRONTEND ---
+node_modules/
+dist/
+.angular/
+
+# --- BACKEND ---
+venv/
+env/
+.venv/
+__pycache__/
+*.py[cod]
+db.sqlite3
+
+# --- IDEs ---
+.vscode/
+.idea/
+
+# --- SISTEMA ---
+.DS_Store
+Thumbs.db
+.env
